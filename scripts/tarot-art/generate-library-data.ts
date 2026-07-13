@@ -1,36 +1,60 @@
 import { writeFile } from "node:fs/promises";
+import { pathToFileURL } from "node:url";
 
-import {
-  getTarotArtManifestEntry,
-  tarotArtManifest
-} from "../../data/tarot-art-manifest.ts";
-import { tarotCards } from "../../lib/tarot-cards.ts";
+import { tarotArtManifest } from "../../data/tarot-art-manifest.ts";
+import { type TarotCard, tarotCards } from "../../lib/tarot-cards.ts";
+import type { TarotArtManifestEntry } from "../../types/tarot-art.ts";
 
-const canonicalCardIds = new Set(tarotCards.map((card) => card.id));
-
-for (const art of tarotArtManifest) {
-  if (!canonicalCardIds.has(art.cardId)) {
-    throw new Error(`Missing canonical tarot card for manifest entry ${art.cardId}`);
+export function buildTarotLibraryEntries(
+  cards: readonly TarotCard[],
+  manifest: readonly TarotArtManifestEntry[]
+) {
+  const canonicalCardIds = new Set<number>();
+  for (const card of cards) {
+    if (canonicalCardIds.has(card.id)) {
+      throw new Error(`Duplicate canonical tarot card id ${card.id}`);
+    }
+    canonicalCardIds.add(card.id);
   }
+
+  const manifestCardIds = new Set<number>();
+  for (const art of manifest) {
+    if (manifestCardIds.has(art.cardId)) {
+      throw new Error(`Duplicate art manifest cardId ${art.cardId}`);
+    }
+    manifestCardIds.add(art.cardId);
+
+    if (!canonicalCardIds.has(art.cardId)) {
+      throw new Error(`Missing canonical tarot card for manifest entry ${art.cardId}`);
+    }
+  }
+
+  if (manifestCardIds.size !== canonicalCardIds.size) {
+    throw new Error(
+      `Tarot card/manifest ID count mismatch: ${canonicalCardIds.size} cards, ${manifestCardIds.size} manifest entries`
+    );
+  }
+
+  const output = cards.map((card) => {
+    const art = manifest.find((entry) => entry.cardId === card.id);
+    if (!art) throw new Error(`Missing art manifest entry for card ${card.id}`);
+    return {
+      cardId: card.id,
+      imagePath: `/images/tarot/cards/${card.id}.webp`,
+      imageAlt: `${card.name_cn}原创牌面：${art.sceneSummary}`,
+      story: `${art.sceneSummary}。${art.uprightVisualCue}；${art.reversedVisualCue}。`,
+      sceneSummary: art.sceneSummary,
+      characters: art.characters,
+      location: art.location,
+      symbols: art.librarySymbols,
+      dominantColor: art.dominantColor
+    };
+  });
+
+  return output.sort((left, right) => left.cardId - right.cardId);
 }
 
-const output = tarotCards.map((card) => {
-  const art = getTarotArtManifestEntry(card.id);
-  if (!art) throw new Error(`Missing art manifest entry for card ${card.id}`);
-  return {
-    cardId: card.id,
-    imagePath: `/images/tarot/cards/${card.id}.webp`,
-    imageAlt: `${card.name_cn}原创牌面：${art.sceneSummary}`,
-    story: `${art.sceneSummary}。${art.uprightVisualCue}；${art.reversedVisualCue}。`,
-    sceneSummary: art.sceneSummary,
-    characters: art.characters,
-    location: art.location,
-    symbols: art.librarySymbols,
-    dominantColor: art.dominantColor
-  };
-});
-
-output.sort((left, right) => left.cardId - right.cardId);
+const output = buildTarotLibraryEntries(tarotCards, tarotArtManifest);
 
 const moduleSource = `export type TarotLibraryEntry = {
   cardId: number;
@@ -55,7 +79,9 @@ async function generateLibraryData() {
   await writeFile(new URL("../../lib/tarot-library.ts", import.meta.url), moduleSource, "utf8");
 }
 
-generateLibraryData().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  generateLibraryData().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
