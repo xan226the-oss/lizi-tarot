@@ -75,3 +75,74 @@ test("library CSS provides exact grid breakpoints, focus and reduced motion", as
   const reducedMotionCss = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
   assert.match(reducedMotionCss, /\.cardLink:hover[\s\S]*?transform:\s*none/);
 });
+
+test("detail route statically generates numeric ids and rejects missing data", async () => {
+  const source = await readProjectFile("app/library/[cardId]/page.tsx");
+  assert.match(source, /dynamicParams\s*=\s*false/);
+  assert.match(source, /generateStaticParams/);
+  assert.match(source, /Array\.from\(\{ length: 78 \}/);
+  assert.match(source, /parseLibraryCardId/);
+  assert.match(source, /getTarotCardById/);
+  assert.match(source, /getTarotLibraryEntry/);
+  assert.match(source, /notFound\(\)/);
+  assert.match(source, /TarotCardArtwork/);
+  assert.match(source, /TarotMeaningTabs/);
+  assert.match(source, /TarotStoryPanel/);
+  assert.match(source, /TarotDetailNavigation/);
+  assert.match(source, /priority/);
+  assert.doesNotMatch(source, /\/chat|DeepSeek|provenance/i);
+});
+
+test("meaning switch is an accessible local tab set", async () => {
+  const source = await readProjectFile("components/library/TarotMeaningTabs.tsx");
+  assert.match(source, /role="tablist"/);
+  assert.match(source, /role="tab"/);
+  assert.match(source, /aria-selected/);
+  assert.match(source, /aria-controls/);
+  assert.match(source, /role="tabpanel"/);
+  assert.match(source, /aria-labelledby/);
+  assert.match(source, /meaning-tab-upright/);
+  assert.match(source, /meaning-tab-reversed/);
+  assert.match(source, /meaning-panel-upright/);
+  assert.match(source, /meaning-panel-reversed/);
+  assert.match(source, /ArrowLeft/);
+  assert.match(source, /ArrowRight/);
+  assert.match(source, /\.focus\(\)/);
+  assert.match(source, /正位/);
+  assert.match(source, /逆位/);
+  assert.doesNotMatch(source, /useRouter|useSearchParams|rotate/);
+});
+
+test("detail navigation disables both deck boundaries and never loops", async () => {
+  const source = await readProjectFile("components/library/TarotDetailNavigation.tsx");
+  assert.match(source, /previousCard/);
+  assert.match(source, /nextCard/);
+  assert.match(source, /aria-disabled/);
+  assert.match(source, /已是第一张/);
+  assert.match(source, /已是最后一张/);
+  assert.doesNotMatch(source, /78.*previous|1.*next/);
+});
+
+test("story panel exposes story, characters, location and symbols", async () => {
+  const source = await readProjectFile("components/library/TarotStoryPanel.tsx");
+  assert.match(source, /文明编年/);
+  assert.match(source, /entry\.story/);
+  assert.match(source, /entry\.characters/);
+  assert.match(source, /entry\.location/);
+  assert.match(source, /entry\.symbols/);
+});
+
+test("detail page has a useful 404 and responsive archive layout", async () => {
+  const [notFound, css] = await Promise.all([
+    readProjectFile("app/library/[cardId]/not-found.tsx"),
+    readProjectFile("components/library/Library.module.css")
+  ]);
+  assert.match(notFound, /没有找到这张牌/);
+  assert.match(notFound, /牌的编号不存在，或牌库资料尚未完成。/);
+  assert.match(notFound, /href="\/library"/);
+  assert.match(notFound, /href="\/"/);
+  assert.match(css, /\.detailLayout/);
+  assert.match(css, /grid-template-columns:\s*minmax\(280px, 0\.86fr\) minmax\(0, 1\.14fr\)/);
+  assert.match(css, /max-width:\s*480px/);
+  assert.match(css, /overflow-wrap:\s*anywhere/);
+});
