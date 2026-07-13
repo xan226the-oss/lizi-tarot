@@ -73,6 +73,19 @@ test("generator rejects duplicate manifest card ids", () => {
   );
 });
 
+test("getter returns the matching runtime entry for every canonical card id", () => {
+  const expected = expectedRuntimeEntries();
+
+  for (const [index, card] of tarotCards.entries()) {
+    const entry = getTarotLibraryEntry(card.id);
+
+    assert.ok(entry);
+    assert.equal(entry, tarotLibraryEntries[index]);
+    assert.equal(entry.cardId, expected[index].cardId);
+    assert.equal(entry.imagePath, expected[index].imagePath);
+  }
+});
+
 test("getter returns null for unknown ids", () => {
   assert.equal(getTarotLibraryEntry(0), null);
   assert.equal(getTarotLibraryEntry(79), null);
