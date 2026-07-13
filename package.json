@@ -8,7 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
-    "tarot:library-data": "node --experimental-strip-types scripts/tarot-art/generate-library-data.ts"
+    "tarot:library-data": "node --experimental-strip-types scripts/tarot-art/generate-library-data.ts",
+    "tarot:prompts": "node --experimental-strip-types scripts/tarot-art/prompts.ts",
+    "tarot:process": "node --experimental-strip-types scripts/tarot-art/process.ts",
+    "tarot:review": "node --experimental-strip-types scripts/tarot-art/review.ts",
+    "tarot:verify": "node --experimental-strip-types scripts/tarot-art/verify.ts",
+    "tarot:contact-sheet": "node --experimental-strip-types scripts/tarot-art/contact-sheet.ts"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^0.10.35",
@@ -27,6 +32,7 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.32",
     "postcss": "^8.5.6",
+    "sharp": "^0.33.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3"
   }

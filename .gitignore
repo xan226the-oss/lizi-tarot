@@ -41,3 +41,8 @@ Thumbs.db
 *.key
 *.p12
 *.pfx
+
+# Local original tarot source archive and production scratch files
+artwork-source/tarot/*.png
+artwork-source/tarot/prompts/
+artwork-source/tarot/contact-sheets/
