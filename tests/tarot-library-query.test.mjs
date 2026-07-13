@@ -29,6 +29,26 @@ function filtersFromHref(href) {
   return readLibraryFilters(new URL(href, "https://library.test").searchParams);
 }
 
+function createDelayedRouter(controller) {
+  const submissions = [];
+
+  return {
+    submissions,
+    push(filters) {
+      submissions.push({ method: "push", href: libraryHref(filters) });
+    },
+    replace(filters) {
+      submissions.push({ method: "replace", href: libraryHref(filters) });
+    },
+    commit(index) {
+      controller.observe(filtersFromHref(submissions[index].href));
+    },
+    observe(href) {
+      controller.observe(filtersFromHref(href));
+    }
+  };
+}
+
 test("searches Chinese name, English name, keyword and both meanings", () => {
   for (const query of ["愚者", "the fool", "冒险", "新的道路", "确认边界"]) {
     const result = filterLibraryCards(records, { q: query, arcana: "all", suit: "all" });
@@ -97,25 +117,14 @@ test("latest library intent survives delayed URL commits and resyncs when idle",
     arcana: "all",
     suit: "all"
   });
-  const submissions = [];
-  const delayedRouter = {
-    push(filters) {
-      submissions.push({ method: "push", href: libraryHref(filters) });
-    },
-    replace(filters) {
-      submissions.push({ method: "replace", href: libraryHref(filters) });
-    },
-    commit(index) {
-      controller.observe(filtersFromHref(submissions[index].href));
-    }
-  };
+  const delayedRouter = createDelayedRouter(controller);
 
   delayedRouter.push(controller.patch({ arcana: "major" }));
   delayedRouter.push(controller.patch({ suit: "cups" }));
   delayedRouter.replace(controller.patch({ q: "星" }));
   delayedRouter.replace(controller.patch({ q: "星星" }));
 
-  assert.deepEqual(submissions, [
+  assert.deepEqual(delayedRouter.submissions, [
     { method: "push", href: "/library?arcana=major" },
     { method: "push", href: "/library?arcana=major&suit=cups" },
     {
@@ -140,11 +149,81 @@ test("latest library intent survives delayed URL commits and resyncs when idle",
     suit: "cups"
   });
 
-  delayedRouter.commit(submissions.length - 1);
+  delayedRouter.commit(delayedRouter.submissions.length - 1);
   controller.observe(filtersFromHref("/library?arcana=major"));
   assert.deepEqual(controller.getSnapshot(), {
     q: "",
     arcana: "major",
+    suit: "all"
+  });
+});
+
+test("clear stays authoritative while older navigation generations settle", () => {
+  const controller = createLibraryIntentController({
+    q: "",
+    arcana: "all",
+    suit: "all"
+  });
+  const delayedRouter = createDelayedRouter(controller);
+  const empty = { q: "", arcana: "all", suit: "all" };
+
+  delayedRouter.push(controller.patch({ arcana: "major" }));
+  delayedRouter.push(controller.patch({ suit: "cups" }));
+  delayedRouter.push(controller.replace(empty));
+
+  assert.deepEqual(controller.getSnapshot(), empty);
+  delayedRouter.commit(0);
+  assert.deepEqual(controller.getSnapshot(), empty);
+  delayedRouter.commit(1);
+  assert.deepEqual(controller.getSnapshot(), empty);
+
+  delayedRouter.commit(2);
+  delayedRouter.observe("/library?arcana=minor");
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "",
+    arcana: "minor",
+    suit: "all"
+  });
+});
+
+test("idle same-href navigation does not block a later back observation", () => {
+  const controller = createLibraryIntentController({
+    q: "",
+    arcana: "major",
+    suit: "all"
+  });
+  const delayedRouter = createDelayedRouter(controller);
+
+  delayedRouter.push(controller.patch({ arcana: "major" }));
+  delayedRouter.observe("/library");
+
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "",
+    arcana: "all",
+    suit: "all"
+  });
+});
+
+test("repeating the latest pending href ignores older different commits and then settles", () => {
+  const controller = createLibraryIntentController({
+    q: "",
+    arcana: "all",
+    suit: "all"
+  });
+  const delayedRouter = createDelayedRouter(controller);
+  const cups = { q: "", arcana: "major", suit: "cups" };
+
+  delayedRouter.push(controller.patch({ arcana: "major" }));
+  delayedRouter.push(controller.patch({ suit: "cups" }));
+  delayedRouter.push(controller.patch({ suit: "cups" }));
+
+  delayedRouter.commit(0);
+  assert.deepEqual(controller.getSnapshot(), cups);
+  delayedRouter.commit(1);
+  delayedRouter.observe("/library");
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "",
+    arcana: "all",
     suit: "all"
   });
 });

@@ -73,7 +73,8 @@ function libraryFilterKey(filters: LibraryFilterState) {
 export function createLibraryIntentController(initialFilters: LibraryFilterState) {
   let intent = normalizeLibraryFilters(initialFilters);
   let observedKey = libraryFilterKey(intent);
-  let pendingKey: string | null = null;
+  let navigationGeneration = 0;
+  let outstandingIntent: { generation: number; targetKey: string } | null = null;
   const listeners = new Set<() => void>();
 
   function emit() {
@@ -83,8 +84,12 @@ export function createLibraryIntentController(initialFilters: LibraryFilterState
   function setIntent(nextFilters: LibraryFilterState) {
     const nextIntent = { ...nextFilters };
     const nextKey = libraryFilterKey(nextIntent);
-    pendingKey = nextKey === observedKey ? null : nextKey;
-    intent = pendingKey ? nextIntent : normalizeLibraryFilters(nextIntent);
+    const generation = ++navigationGeneration;
+    // Same-href intent is already settled only when no older navigation can still commit.
+    const needsSettlement = outstandingIntent !== null || nextKey !== observedKey;
+
+    outstandingIntent = needsSettlement ? { generation, targetKey: nextKey } : null;
+    intent = needsSettlement ? nextIntent : normalizeLibraryFilters(nextIntent);
     emit();
     return intent;
   }
@@ -106,10 +111,13 @@ export function createLibraryIntentController(initialFilters: LibraryFilterState
     observe(observedFilters: LibraryFilterState) {
       const normalizedObserved = normalizeLibraryFilters(observedFilters);
       observedKey = libraryFilterKey(normalizedObserved);
+      const pendingKey = outstandingIntent?.targetKey ?? null;
 
-      if (pendingKey && observedKey !== pendingKey) return intent;
+      if (pendingKey !== null && observedKey !== pendingKey) return intent;
 
-      pendingKey = null;
+      if (outstandingIntent?.generation === navigationGeneration) {
+        outstandingIntent = null;
+      }
       intent = normalizedObserved;
       emit();
       return intent;
