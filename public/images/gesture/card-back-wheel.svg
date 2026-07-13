@@ -1,0 +1,80 @@
+<svg width="640" height="896" viewBox="0 0 640 896" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="896" rx="38" fill="#0A1128"/>
+  <rect x="18" y="18" width="604" height="860" rx="28" fill="url(#backGlow)" stroke="#C9A961" stroke-opacity=".58" stroke-width="2"/>
+  <rect x="42" y="42" width="556" height="812" rx="20" stroke="#C9A961" stroke-opacity=".28" stroke-width="2"/>
+  <rect x="72" y="72" width="496" height="752" rx="14" stroke="#4A7FC1" stroke-opacity=".28" stroke-width="1.5"/>
+
+  <g opacity=".52">
+    <path d="M104 212C174 168 244 146 314 146C396 146 470 178 536 242" stroke="#C9A961" stroke-opacity=".26" stroke-width="1.5"/>
+    <path d="M104 684C174 728 244 750 314 750C396 750 470 718 536 654" stroke="#C9A961" stroke-opacity=".22" stroke-width="1.5"/>
+    <path d="M126 448H514" stroke="#C9A961" stroke-opacity=".18" stroke-width="1"/>
+    <path d="M320 118V778" stroke="#C9A961" stroke-opacity=".16" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(320 448)">
+    <circle r="206" stroke="#C9A961" stroke-opacity=".24" stroke-width="2"/>
+    <circle r="166" stroke="#C9A961" stroke-opacity=".48" stroke-width="2"/>
+    <circle r="120" stroke="#D4AF37" stroke-opacity=".56" stroke-width="2"/>
+
+    <g stroke="#C9A961" stroke-opacity=".72" stroke-width="2">
+      <path d="M0 -236V-206"/>
+      <path d="M118 -204L103 -178"/>
+      <path d="M204 -118L178 -103"/>
+      <path d="M236 0H206"/>
+      <path d="M204 118L178 103"/>
+      <path d="M118 204L103 178"/>
+      <path d="M0 236V206"/>
+      <path d="M-118 204L-103 178"/>
+      <path d="M-204 118L-178 103"/>
+      <path d="M-236 0H-206"/>
+      <path d="M-204 -118L-178 -103"/>
+      <path d="M-118 -204L-103 -178"/>
+    </g>
+
+    <g stroke="#4A7FC1" stroke-opacity=".42" stroke-width="1.5">
+      <path d="M-166 0C-92 -62 92 -62 166 0C92 62 -92 62 -166 0Z"/>
+      <path d="M0 -166C62 -92 62 92 0 166C-62 92 -62 -92 0 -166Z"/>
+      <path d="M-118 -118C-30 -88 88 30 118 118C30 88 -88 -30 -118 -118Z"/>
+      <path d="M118 -118C88 -30 -30 88 -118 118C-88 30 30 -88 118 -118Z"/>
+    </g>
+
+    <g filter="url(#runeGlow)">
+      <path d="M0 -82L22 -24L84 -18L36 20L50 82L0 48L-50 82L-36 20L-84 -18L-22 -24L0 -82Z" stroke="#D4AF37" stroke-width="4" stroke-linejoin="round"/>
+      <circle r="38" stroke="#C9A961" stroke-width="3"/>
+      <path d="M0 -110V-82M0 82V110M-110 0H-84M84 0H110" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"/>
+      <circle r="7" fill="#D4AF37"/>
+    </g>
+
+    <g fill="#F5F0E6" opacity=".74">
+      <circle cx="-144" cy="-96" r="3"/>
+      <circle cx="142" cy="-72" r="2.6"/>
+      <circle cx="-96" cy="128" r="2.3"/>
+      <circle cx="118" cy="132" r="3"/>
+      <circle cx="0" cy="-146" r="2.4"/>
+      <circle cx="0" cy="146" r="2.4"/>
+    </g>
+  </g>
+
+  <g opacity=".32" stroke="#C9A961" stroke-width="1">
+    <path d="M112 118L212 226L118 336"/>
+    <path d="M528 118L428 226L522 336"/>
+    <path d="M112 778L212 670L118 560"/>
+    <path d="M528 778L428 670L522 560"/>
+  </g>
+
+  <defs>
+    <radialGradient id="backGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 448) rotate(90) scale(442 298)">
+      <stop stop-color="#1A3561"/>
+      <stop offset=".44" stop-color="#0D1B2A"/>
+      <stop offset="1" stop-color="#070D20"/>
+    </radialGradient>
+    <filter id="runeGlow" x="-130" y="-156" width="260" height="312" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.83 0 1 0 0 0.68 0 0 1 0 0.22 0 0 0 .9 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+</svg>

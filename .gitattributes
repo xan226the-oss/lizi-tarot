@@ -1,0 +1,6 @@
+# Preserve upstream-generated MediaPipe bundles without rewriting their formatting.
+public/vendor/mediapipe/tasks-vision/wasm/*.js -whitespace
+
+# These planning documents intentionally use Markdown hard line breaks.
+docs/superpowers/plans/2026-07-12-normal-draw-question-and-sequential-draw.md whitespace=-blank-at-eol
+docs/superpowers/specs/2026-07-12-normal-draw-question-and-sequential-draw-design.md whitespace=-blank-at-eol
