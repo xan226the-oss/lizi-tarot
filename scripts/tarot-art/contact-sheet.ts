@@ -3,7 +3,12 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import sharp from "sharp";
 
-import { parseBatchKey, parseCardIds, parseRootDir } from "./args.ts";
+import {
+  parseBatchKey,
+  parseCardIds,
+  parseRootDir,
+  validateTarotCliArgs
+} from "./args.ts";
 import { writeFileAtomically } from "./process.ts";
 
 const THUMBNAIL_WIDTH = 160;
@@ -82,6 +87,7 @@ export async function createTarotContactSheet({
 
 async function main() {
   const argv = process.argv.slice(2);
+  validateTarotCliArgs("contact-sheet", argv);
   const ids = parseCardIds(argv);
   const batchKey = parseBatchKey(argv);
   const outputPath = await createTarotContactSheet({

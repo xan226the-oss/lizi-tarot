@@ -3,7 +3,12 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
 import type { TarotArtProvenance, TarotArtReview } from "../../types/tarot-art.ts";
-import { optionValue, parseCardIds, parseRootDir } from "./args.ts";
+import {
+  optionValue,
+  parseCardIds,
+  parseRootDir,
+  validateTarotCliArgs
+} from "./args.ts";
 import { sha256File } from "./hash.ts";
 import {
   readTarotProvenance,
@@ -101,6 +106,7 @@ function parseSymbolCount(argv: string[]) {
 
 async function main() {
   const argv = process.argv.slice(2);
+  validateTarotCliArgs("review", argv);
   const ids = parseCardIds(argv);
   const rootDir = parseRootDir(argv);
   const review: TarotArtReview = {

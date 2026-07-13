@@ -6,7 +6,13 @@ import sharp from "sharp";
 import { APPROVED_TAROT_SAMPLES } from "../../data/tarot-approved-samples.ts";
 import { getTarotArtManifestEntry } from "../../data/tarot-art-manifest.ts";
 import type { TarotArtProvenance, TarotArtReview } from "../../types/tarot-art.ts";
-import { hasOption, parseCardIds, parseRootDir } from "./args.ts";
+import {
+  hasOption,
+  isValidUtcDate,
+  parseCardIds,
+  parseRootDir,
+  validateTarotCliArgs
+} from "./args.ts";
 import { sha256File } from "./hash.ts";
 import { readTarotProvenance } from "./process.ts";
 
@@ -151,7 +157,7 @@ async function verifyCard(
   if (!sameIds(record.internalReferenceCardIds, expectedReferences)) {
     errors.push(`Card ${cardId} internal reference IDs do not match the manifest`);
   }
-  if (!record.createdAt || !/^\d{4}-\d{2}-\d{2}$/.test(record.createdAt)) {
+  if (!record.createdAt || !isValidUtcDate(record.createdAt)) {
     errors.push(`Card ${cardId} provenance createdAt is invalid`);
   }
   if (!record.generator?.trim()) errors.push(`Card ${cardId} provenance generator is empty`);
@@ -186,6 +192,7 @@ export async function verifyTarotArtwork({
 
 async function main() {
   const argv = process.argv.slice(2);
+  validateTarotCliArgs("verify", argv);
   const ids = parseCardIds(argv);
   const result = await verifyTarotArtwork({
     ids,

@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 import { tarotArtManifest } from "../../data/tarot-art-manifest.ts";
 import { type TarotCard, tarotCards } from "../../lib/tarot-cards.ts";
 import type { TarotArtManifestEntry } from "../../types/tarot-art.ts";
+import { validateTarotCliArgs } from "./args.ts";
 
 export function buildTarotLibraryEntries(
   cards: readonly TarotCard[],
@@ -79,8 +80,13 @@ async function generateLibraryData() {
   await writeFile(new URL("../../lib/tarot-library.ts", import.meta.url), moduleSource, "utf8");
 }
 
+async function main() {
+  validateTarotCliArgs("library-data", process.argv.slice(2));
+  await generateLibraryData();
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  generateLibraryData().catch((error) => {
+  main().catch((error) => {
     console.error(error);
     process.exitCode = 1;
   });

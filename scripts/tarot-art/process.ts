@@ -6,7 +6,14 @@ import sharp from "sharp";
 import { APPROVED_TAROT_SAMPLES } from "../../data/tarot-approved-samples.ts";
 import { getTarotArtManifestEntry } from "../../data/tarot-art-manifest.ts";
 import type { TarotArtProvenance, TarotArtReview } from "../../types/tarot-art.ts";
-import { currentUtcDate, optionValue, parseCardIds, parseRootDir } from "./args.ts";
+import {
+  currentUtcDate,
+  isValidUtcDate,
+  optionValue,
+  parseCardIds,
+  parseRootDir,
+  validateTarotCliArgs
+} from "./args.ts";
 import { sha256File } from "./hash.ts";
 
 const OUTPUT_WIDTH = 1024;
@@ -19,6 +26,13 @@ type ProcessTarotArtworkOptions = {
   rootDir: string;
   createdAt?: string;
   generator: string;
+  transactionHooks?: ProcessTransactionHooks;
+};
+
+type ProcessTransactionHooks = {
+  afterCommit?: () => Promise<void> | void;
+  restoreProvenance?: (path: string, previousContents: string) => Promise<void>;
+  restoreWeb?: (path: string, previousContents: Buffer | undefined) => Promise<void>;
 };
 
 function temporaryPath(path: string) {
@@ -115,13 +129,14 @@ export async function processTarotArtwork({
   cardId,
   rootDir,
   createdAt = currentUtcDate(),
-  generator
+  generator,
+  transactionHooks
 }: ProcessTarotArtworkOptions) {
   if (!Number.isInteger(cardId) || cardId < 1 || cardId > 78) {
     throw new Error(`Card ID ${cardId} must be from 1 to 78`);
   }
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(createdAt)) {
-    throw new Error(`createdAt must use YYYY-MM-DD, received ${createdAt}`);
+  if (!isValidUtcDate(createdAt)) {
+    throw new Error(`createdAt must be a valid UTC calendar date in YYYY-MM-DD, received ${createdAt}`);
   }
   if (!generator?.trim()) throw new Error("generator is required");
 
@@ -219,6 +234,7 @@ export async function processTarotArtwork({
     webCommitted = true;
     await rename(stagedProvenancePath, provenancePath);
     provenanceCommitted = true;
+    await transactionHooks?.afterCommit?.();
 
     const [finalSourceSha256, finalWebSha256] = await Promise.all([
       sha256File(sourcePath),
@@ -236,11 +252,36 @@ export async function processTarotArtwork({
       provenance
     };
   } catch (error) {
+    const rollbackErrors: Error[] = [];
     if (provenanceCommitted) {
-      await writeFileAtomically(provenancePath, previousProvenanceRaw);
+      try {
+        const restoreProvenance = transactionHooks?.restoreProvenance
+          ?? ((path: string, previousContents: string) => writeFileAtomically(path, previousContents));
+        await restoreProvenance(provenancePath, previousProvenanceRaw);
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError instanceof Error
+          ? rollbackError
+          : new Error(String(rollbackError))
+        );
+      }
     }
     if (webCommitted) {
-      await restoreRuntimeImage(webPath, previousWeb);
+      try {
+        const restoreWeb = transactionHooks?.restoreWeb ?? restoreRuntimeImage;
+        await restoreWeb(webPath, previousWeb);
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError instanceof Error
+          ? rollbackError
+          : new Error(String(rollbackError))
+        );
+      }
+    }
+    if (rollbackErrors.length > 0) {
+      const originalError = error instanceof Error ? error : new Error(String(error));
+      throw new AggregateError(
+        [originalError, ...rollbackErrors],
+        `Card ${cardId} processing failed and rollback failed`
+      );
     }
     throw error;
   } finally {
@@ -253,6 +294,7 @@ export async function processTarotArtwork({
 
 async function main() {
   const argv = process.argv.slice(2);
+  validateTarotCliArgs("process", argv);
   const ids = parseCardIds(argv);
   const rootDir = parseRootDir(argv);
   const createdAt = optionValue(argv, "--created-at");

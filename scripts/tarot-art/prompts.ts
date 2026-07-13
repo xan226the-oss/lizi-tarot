@@ -4,7 +4,12 @@ import { pathToFileURL } from "node:url";
 
 import { getTarotArtManifestEntry } from "../../data/tarot-art-manifest.ts";
 import { buildTarotArtPrompt } from "../../lib/tarot-art-prompt.ts";
-import { parseBatchKey, parseCardIds, parseRootDir } from "./args.ts";
+import {
+  parseBatchKey,
+  parseCardIds,
+  parseRootDir,
+  validateTarotCliArgs
+} from "./args.ts";
 import { writeFileAtomically } from "./process.ts";
 
 export type TarotPromptRecord = {
@@ -60,6 +65,7 @@ export async function writeTarotPromptFiles({
 
 async function main() {
   const argv = process.argv.slice(2);
+  validateTarotCliArgs("prompts", argv);
   const ids = parseCardIds(argv);
   const batchKey = parseBatchKey(argv);
   const result = await writeTarotPromptFiles({

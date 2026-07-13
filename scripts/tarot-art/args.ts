@@ -4,6 +4,66 @@ import type { TarotProductionBatchKey } from "../../types/tarot-art.ts";
 const CARD_ID_MIN = 1;
 const CARD_ID_MAX = 78;
 
+export type TarotCliCommand =
+  | "library-data"
+  | "prompts"
+  | "process"
+  | "review"
+  | "verify"
+  | "contact-sheet";
+
+type TarotCliSchema = {
+  valueOptions: readonly string[];
+  flagOptions: readonly string[];
+};
+
+const SELECTOR_OPTIONS = ["--ids", "--batch", "--root"] as const;
+
+const TAROT_CLI_SCHEMAS: Record<TarotCliCommand, TarotCliSchema> = {
+  "library-data": { valueOptions: [], flagOptions: [] },
+  prompts: { valueOptions: SELECTOR_OPTIONS, flagOptions: [] },
+  process: {
+    valueOptions: [...SELECTOR_OPTIONS, "--created-at", "--generator"],
+    flagOptions: []
+  },
+  review: {
+    valueOptions: [
+      ...SELECTOR_OPTIONS,
+      "--anatomy",
+      "--symbol-count",
+      "--style-consistency",
+      "--forbidden-elements"
+    ],
+    flagOptions: []
+  },
+  verify: { valueOptions: SELECTOR_OPTIONS, flagOptions: ["--strict"] },
+  "contact-sheet": { valueOptions: SELECTOR_OPTIONS, flagOptions: [] }
+};
+
+export function validateTarotCliArgs(command: TarotCliCommand, argv: string[]) {
+  const schema = TAROT_CLI_SCHEMAS[command];
+  if (!schema) throw new Error(`Unknown tarot CLI command ${command}`);
+  const valueOptions = new Set(schema.valueOptions);
+  const flagOptions = new Set(schema.flagOptions);
+  const seen = new Set<string>();
+
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = argv[index];
+    if (!token.startsWith("--")) throw new Error(`Unexpected argument ${token}`);
+    if (!valueOptions.has(token) && !flagOptions.has(token)) {
+      throw new Error(`Unknown option ${token}`);
+    }
+    if (seen.has(token)) throw new Error(`Duplicate option ${token}`);
+    seen.add(token);
+
+    if (valueOptions.has(token)) {
+      const value = argv[index + 1];
+      if (!value || value.startsWith("--")) throw new Error(`Missing value for ${token}`);
+      index += 1;
+    }
+  }
+}
+
 export function optionValue(argv: string[], name: string) {
   const positions = argv.flatMap((value, index) => value === name ? [index] : []);
   if (positions.length > 1) throw new Error(`Duplicate option ${name}`);
@@ -86,4 +146,18 @@ export function parseRootDir(argv: string[]) {
 
 export function currentUtcDate() {
   return new Date().toISOString().slice(0, 10);
+}
+
+export function isValidUtcDate(value: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return false;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(0);
+  date.setUTCHours(0, 0, 0, 0);
+  date.setUTCFullYear(year, month - 1, day);
+  return date.getUTCFullYear() === year
+    && date.getUTCMonth() === month - 1
+    && date.getUTCDate() === day;
 }
