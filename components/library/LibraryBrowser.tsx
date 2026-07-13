@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import {
+  createLibraryIntentController,
   filterLibraryCards,
   readLibraryFilters,
   toLibrarySearchParams,
@@ -29,7 +30,28 @@ const emptyFilters: LibraryFilterState = {
 export function LibraryBrowser({ cards, readyImageCount }: LibraryBrowserProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const filters = readLibraryFilters(new URLSearchParams(searchParams.toString()));
+  const urlFilters = readLibraryFilters(new URLSearchParams(searchParams.toString()));
+  const intentControllerRef = useRef<ReturnType<typeof createLibraryIntentController> | null>(null);
+
+  if (!intentControllerRef.current) {
+    intentControllerRef.current = createLibraryIntentController(urlFilters);
+  }
+
+  const intentController = intentControllerRef.current;
+  const filters = useSyncExternalStore(
+    intentController.subscribe,
+    intentController.getSnapshot,
+    intentController.getSnapshot
+  );
+
+  useEffect(() => {
+    intentController.observe({
+      q: urlFilters.q,
+      arcana: urlFilters.arcana,
+      suit: urlFilters.suit
+    });
+  }, [intentController, urlFilters.q, urlFilters.arcana, urlFilters.suit]);
+
   const filteredCards = useMemo(
     () =>
       filterLibraryCards(cards, {
@@ -50,11 +72,18 @@ export function LibraryBrowser({ cards, readyImageCount }: LibraryBrowserProps) 
     return params ? `/library?${params}` : "/library";
   }
 
-  function replaceFilters(nextFilters: LibraryFilterState) {
+  function replaceFilters(patch: Partial<LibraryFilterState>) {
+    const nextFilters = intentController.patch(patch);
     router.replace(hrefFor(nextFilters), { scroll: false });
   }
 
-  function pushFilters(nextFilters: LibraryFilterState) {
+  function pushFilters(patch: Partial<LibraryFilterState>) {
+    const nextFilters = intentController.patch(patch);
+    router.push(hrefFor(nextFilters), { scroll: false });
+  }
+
+  function clearFilters() {
+    const nextFilters = intentController.replace(emptyFilters);
     router.push(hrefFor(nextFilters), { scroll: false });
   }
 
@@ -74,10 +103,10 @@ export function LibraryBrowser({ cards, readyImageCount }: LibraryBrowserProps) 
 
       <LibraryFilters
         filters={filters}
-        onQueryChange={(q) => replaceFilters({ ...filters, q })}
-        onArcanaChange={(arcana) => pushFilters({ ...filters, arcana })}
-        onSuitChange={(suit) => pushFilters({ ...filters, suit })}
-        onClear={() => pushFilters(emptyFilters)}
+        onQueryChange={(q) => replaceFilters({ q })}
+        onArcanaChange={(arcana) => pushFilters({ arcana })}
+        onSuitChange={(suit) => pushFilters({ suit })}
+        onClear={clearFilters}
       />
 
       <div className={styles.resultBar} aria-live="polite">
@@ -91,7 +120,7 @@ export function LibraryBrowser({ cards, readyImageCount }: LibraryBrowserProps) 
       <TarotCardGrid
         cards={filteredCards}
         filters={filters}
-        onClear={() => pushFilters(emptyFilters)}
+        onClear={clearFilters}
       />
     </div>
   );

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  createLibraryIntentController,
   filterLibraryCards,
   getTarotArtworkTone,
   readLibraryFilters,
@@ -17,6 +18,15 @@ const records = tarotCards.map((card) => ({
 
 function params(value) {
   return new URLSearchParams(value);
+}
+
+function libraryHref(filters) {
+  const searchParams = toLibrarySearchParams(filters).toString();
+  return searchParams ? `/library?${searchParams}` : "/library";
+}
+
+function filtersFromHref(href) {
+  return readLibraryFilters(new URL(href, "https://library.test").searchParams);
 }
 
 test("searches Chinese name, English name, keyword and both meanings", () => {
@@ -79,4 +89,62 @@ test("maps the loose canonical suit string to a safe artwork tone", () => {
   assert.equal(getTarotArtworkTone(tarotCards[50]), "swords");
   assert.equal(getTarotArtworkTone(tarotCards[64]), "pentacles");
   assert.equal(getTarotArtworkTone({ ...tarotCards[22], suit: "unexpected" }), "major");
+});
+
+test("latest library intent survives delayed URL commits and resyncs when idle", () => {
+  const controller = createLibraryIntentController({
+    q: "",
+    arcana: "all",
+    suit: "all"
+  });
+  const submissions = [];
+  const delayedRouter = {
+    push(filters) {
+      submissions.push({ method: "push", href: libraryHref(filters) });
+    },
+    replace(filters) {
+      submissions.push({ method: "replace", href: libraryHref(filters) });
+    },
+    commit(index) {
+      controller.observe(filtersFromHref(submissions[index].href));
+    }
+  };
+
+  delayedRouter.push(controller.patch({ arcana: "major" }));
+  delayedRouter.push(controller.patch({ suit: "cups" }));
+  delayedRouter.replace(controller.patch({ q: "星" }));
+  delayedRouter.replace(controller.patch({ q: "星星" }));
+
+  assert.deepEqual(submissions, [
+    { method: "push", href: "/library?arcana=major" },
+    { method: "push", href: "/library?arcana=major&suit=cups" },
+    {
+      method: "replace",
+      href: "/library?q=%E6%98%9F&arcana=major&suit=cups"
+    },
+    {
+      method: "replace",
+      href: "/library?q=%E6%98%9F%E6%98%9F&arcana=major&suit=cups"
+    }
+  ]);
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "星星",
+    arcana: "major",
+    suit: "cups"
+  });
+
+  delayedRouter.commit(0);
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "星星",
+    arcana: "major",
+    suit: "cups"
+  });
+
+  delayedRouter.commit(submissions.length - 1);
+  controller.observe(filtersFromHref("/library?arcana=major"));
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "",
+    arcana: "major",
+    suit: "all"
+  });
 });

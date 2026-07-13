@@ -45,6 +45,10 @@ test("artwork uses next image with bounded priority and one-way failure fallback
   assert.match(artwork, /onError/);
   assert.match(artwork, /牌面暂不可用/);
   assert.match(artwork, /aspect-ratio|aspectRatio/);
+  assert.doesNotMatch(
+    artwork,
+    /className=\{styles\.artworkFallback\}[^>]*role="status"/s
+  );
   assert.match(grid, /index < 6/);
   assert.doesNotMatch(grid, /priority=\{true\}/);
 });
@@ -60,4 +64,6 @@ test("library CSS provides exact grid breakpoints, focus and reduced motion", as
   assert.match(css, /min-height:\s*44px/);
   assert.match(css, /overflow-x:\s*auto/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  const reducedMotionCss = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
+  assert.match(reducedMotionCss, /\.cardLink:hover[\s\S]*?transform:\s*none/);
 });

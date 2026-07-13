@@ -485,6 +485,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cardLink,
+  .cardLink:hover,
+  .cardLink:active,
+  .cardLink:focus-visible,
   .artworkImage,
   .filterButton {
     animation: none;

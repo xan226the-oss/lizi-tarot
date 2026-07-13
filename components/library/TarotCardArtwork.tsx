@@ -55,7 +55,7 @@ export function TarotCardArtwork({
       <div className={styles.artworkPlaceholder} aria-hidden="true" />
 
       {failed ? (
-        <div className={styles.artworkFallback} role="status">
+        <div className={styles.artworkFallback}>
           <Image
             src="/images/tarot/card-unavailable.svg"
             alt=""

@@ -62,6 +62,61 @@ export function toLibrarySearchParams(filters: LibraryFilterState) {
   return searchParams;
 }
 
+function normalizeLibraryFilters(filters: LibraryFilterState) {
+  return readLibraryFilters(toLibrarySearchParams(filters));
+}
+
+function libraryFilterKey(filters: LibraryFilterState) {
+  return toLibrarySearchParams(filters).toString();
+}
+
+export function createLibraryIntentController(initialFilters: LibraryFilterState) {
+  let intent = normalizeLibraryFilters(initialFilters);
+  let observedKey = libraryFilterKey(intent);
+  let pendingKey: string | null = null;
+  const listeners = new Set<() => void>();
+
+  function emit() {
+    listeners.forEach((listener) => listener());
+  }
+
+  function setIntent(nextFilters: LibraryFilterState) {
+    const nextIntent = { ...nextFilters };
+    const nextKey = libraryFilterKey(nextIntent);
+    pendingKey = nextKey === observedKey ? null : nextKey;
+    intent = pendingKey ? nextIntent : normalizeLibraryFilters(nextIntent);
+    emit();
+    return intent;
+  }
+
+  return {
+    getSnapshot: () => intent,
+    subscribe(listener: () => void) {
+      listeners.add(listener);
+      return () => {
+        listeners.delete(listener);
+      };
+    },
+    patch(patch: Partial<LibraryFilterState>) {
+      return setIntent({ ...intent, ...patch });
+    },
+    replace(nextFilters: LibraryFilterState) {
+      return setIntent(nextFilters);
+    },
+    observe(observedFilters: LibraryFilterState) {
+      const normalizedObserved = normalizeLibraryFilters(observedFilters);
+      observedKey = libraryFilterKey(normalizedObserved);
+
+      if (pendingKey && observedKey !== pendingKey) return intent;
+
+      pendingKey = null;
+      intent = normalizedObserved;
+      emit();
+      return intent;
+    }
+  };
+}
+
 export function filterLibraryCards(
   records: TarotLibraryCardRecord[],
   filters: LibraryFilterState
