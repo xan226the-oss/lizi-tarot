@@ -73,8 +73,7 @@ function libraryFilterKey(filters: LibraryFilterState) {
 export function createLibraryIntentController(initialFilters: LibraryFilterState) {
   let intent = normalizeLibraryFilters(initialFilters);
   let observedKey = libraryFilterKey(intent);
-  let navigationGeneration = 0;
-  let outstandingIntent: { generation: number; targetKey: string } | null = null;
+  let pendingKey: string | null = null;
   const listeners = new Set<() => void>();
 
   function emit() {
@@ -84,12 +83,11 @@ export function createLibraryIntentController(initialFilters: LibraryFilterState
   function setIntent(nextFilters: LibraryFilterState) {
     const nextIntent = { ...nextFilters };
     const nextKey = libraryFilterKey(nextIntent);
-    const generation = ++navigationGeneration;
-    // Same-href intent is already settled only when no older navigation can still commit.
-    const needsSettlement = outstandingIntent !== null || nextKey !== observedKey;
+    // Next cancels older navigations, and a same-canonical-URL call emits no new URL observation.
+    const settlesSynchronously = nextKey === observedKey;
 
-    outstandingIntent = needsSettlement ? { generation, targetKey: nextKey } : null;
-    intent = needsSettlement ? nextIntent : normalizeLibraryFilters(nextIntent);
+    pendingKey = settlesSynchronously ? null : nextKey;
+    intent = settlesSynchronously ? normalizeLibraryFilters(nextIntent) : nextIntent;
     emit();
     return intent;
   }
@@ -111,13 +109,10 @@ export function createLibraryIntentController(initialFilters: LibraryFilterState
     observe(observedFilters: LibraryFilterState) {
       const normalizedObserved = normalizeLibraryFilters(observedFilters);
       observedKey = libraryFilterKey(normalizedObserved);
-      const pendingKey = outstandingIntent?.targetKey ?? null;
 
       if (pendingKey !== null && observedKey !== pendingKey) return intent;
 
-      if (outstandingIntent?.generation === navigationGeneration) {
-        outstandingIntent = null;
-      }
+      pendingKey = null;
       intent = normalizedObserved;
       emit();
       return intent;

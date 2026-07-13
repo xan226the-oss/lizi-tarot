@@ -111,7 +111,7 @@ test("maps the loose canonical suit string to a safe artwork tone", () => {
   assert.equal(getTarotArtworkTone({ ...tarotCards[22], suit: "unexpected" }), "major");
 });
 
-test("latest library intent survives delayed URL commits and resyncs when idle", () => {
+test("latest non-same-href intent survives delayed commits and resyncs after matching", () => {
   const controller = createLibraryIntentController({
     q: "",
     arcana: "all",
@@ -158,7 +158,7 @@ test("latest library intent survives delayed URL commits and resyncs when idle",
   });
 });
 
-test("clear stays authoritative while older navigation generations settle", () => {
+test("same-href clear settles without a new observation and leaves back navigation unblocked", () => {
   const controller = createLibraryIntentController({
     q: "",
     arcana: "all",
@@ -172,12 +172,6 @@ test("clear stays authoritative while older navigation generations settle", () =
   delayedRouter.push(controller.replace(empty));
 
   assert.deepEqual(controller.getSnapshot(), empty);
-  delayedRouter.commit(0);
-  assert.deepEqual(controller.getSnapshot(), empty);
-  delayedRouter.commit(1);
-  assert.deepEqual(controller.getSnapshot(), empty);
-
-  delayedRouter.commit(2);
   delayedRouter.observe("/library?arcana=minor");
   assert.deepEqual(controller.getSnapshot(), {
     q: "",
