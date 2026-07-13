@@ -14,6 +14,7 @@ import { join } from "node:path";
 import test from "node:test";
 import sharp from "sharp";
 
+import { APPROVED_TAROT_SAMPLES } from "../data/tarot-approved-samples.ts";
 import * as argTools from "../scripts/tarot-art/args.ts";
 import { processTarotArtwork } from "../scripts/tarot-art/process.ts";
 import { upsertTarotReview } from "../scripts/tarot-art/review.ts";
@@ -86,6 +87,19 @@ async function replaceProvenance(root, update) {
   update(records);
   await writeFile(path, `${JSON.stringify(records, null, 2)}\n`);
 }
+
+test("approved samples preserve known source hashes and original inputs", () => {
+  assert.deepEqual(Object.keys(APPROVED_TAROT_SAMPLES), ["1", "49", "69"]);
+  assert.equal(APPROVED_TAROT_SAMPLES[1].sourceSha256, "c0fd371caea23fa915a1934346051d1b68958afb4799c8277be722866be530e4");
+  assert.equal(APPROVED_TAROT_SAMPLES[49].sourceSha256, "edc94455d1d0e29f6c58b9aed8ae9d84bb7db9814c427be0e37f95f06d15a7bc");
+  assert.equal(APPROVED_TAROT_SAMPLES[69].sourceSha256, "aacee379ad1177f0578789fde50f59d0bb3b28826bef4975d6295a0fda3676a7");
+  assert.deepEqual(APPROVED_TAROT_SAMPLES[1].internalReferenceCardIds, []);
+  assert.deepEqual(APPROVED_TAROT_SAMPLES[49].internalReferenceCardIds, [1]);
+  assert.deepEqual(APPROVED_TAROT_SAMPLES[69].internalReferenceCardIds, [1, 49]);
+  assert.ok(APPROVED_TAROT_SAMPLES[1].prompt.startsWith("Use case: stylized-concept"));
+  assert.match(APPROVED_TAROT_SAMPLES[49].prompt, /Tidal Memory Archive/);
+  assert.match(APPROVED_TAROT_SAMPLES[69].prompt, /exactly five distinct faceted/);
+});
 
 test("processes a 2:3 PNG into a bounded WebP and records independently verified hashes", async () => {
   const root = await fixtureRoot();

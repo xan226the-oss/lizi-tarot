@@ -1,4 +1,65 @@
-export type ApprovedTarotSample = {
+const FOOL_ORIGINAL_PROMPT = String.raw`Use case: stylized-concept
+Asset type: preview-only original tarot card face concept, first of three representative samples
+Primary request: Create a completely original vertical narrative illustration for the archetype of The Fool, expressing beginning, openness, voluntary risk, wonder, and trust in an unknown path without borrowing any imagery or composition from existing tarot decks.
+
+Scene/backdrop: A vast abandoned star observatory of an original lacquer-and-light civilization floats above deep indigo cosmic clouds. Its circular doors are closing behind the protagonist. Ahead, a turquoise star gate is only beginning to form. Between them, a “zero-gravity crossing” made of dark lacquer fragments and luminous mineral petals assembles itself one step at a time in empty space; this is not a cliff.
+
+Subject: One androgynous young adult star traveler, complete full body visible including both hands and both feet, placed on the right third of the frame and occupying roughly 40% of the image height. The traveler deliberately steps onto a newly forming bridge segment, body caught in believable forward motion, expression showing calm wonder mixed with a trace of uncertainty, eyes focused on the forming star gate. Original clothing: layered asymmetrical travel robes integrated with a lightweight celestial harness, dark lacquer scale panels, translucent woven sleeves, a coral-red sash moving in zero gravity, small abstract constellation fasteners, practical boots. The design should feel like an invented East-West interstellar mythology, not recognizable Chinese historical dress, European medieval clothing, a jester, or a familiar science-fiction franchise. A small seed-shaped living compass of light floats near the traveler’s open hand; no animal and no additional character.
+
+Style/medium: High-end hand-painted story illustration with cinematic depth. Shared deck material language is “dark colored lacquer with raised gilded relief”: deep translucent lacquer surfaces, restrained embossed gold contour lines, mineral-pigment color, jewel-like highlights, and subtle painterly texture. Keep faces, fabric, atmosphere, and architecture dimensional and emotionally believable. Do not make it a flat icon, decorative poster, stained-glass panel, 3D render, or photorealistic image.
+
+Composition/framing: Portrait 2:3, full-bleed card-face art with no border. Filmic asymmetric scene composition. Environment occupies 55–65% of the frame. Use a clear diagonal story path from the old observatory at lower left, through the traveler on the right third, toward the forming star gate at upper right. The first read at thumbnail size must be the traveler and the portal light; the second read reveals world details. Do not center the figure and do not use altar-like symmetry.
+
+Lighting/mood: Deep indigo and midnight blue shared base, turquoise portal light, one coral-red focal accent on the sash, subtle violet atmosphere, warm pale skin tones, restrained antique gold limited to about 10% of the image. The mood is sacred but alive, adventurous rather than ominous.
+
+Originality constraints: Entirely original concept. Do not imitate or reference any named artist, existing tarot deck, tarot card illustration, copyrighted character, course material, or recognizable franchise. Preserve the archetypal meaning only.
+Avoid: classic cliff edge, dog, white rose, bundle on a staff, bright yellow sun, jester hat, Rider-Waite-like pose or layout, medieval costume, ornate gold frame, title text, numbers, letters, readable writing, logo, watermark, cropped body, hidden feet, extra limbs, malformed hands, static standing pose, excessive gold, black-and-gold emblem look, cyberpunk neon overload.`;
+
+const QUEEN_OF_CUPS_ORIGINAL_PROMPT = String.raw`Use case: stylized-concept
+Asset type: preview-only original tarot card face concept, second of three representative samples
+Input images: Image 1 is a style-system and shared-world reference only. Do not edit it, copy its composition, repeat its protagonist, reuse the star gate, or reproduce the floating bridge. Create an entirely new card scene and a clearly different adult character while preserving only the shared lacquer-gold material language, deep indigo world, cinematic painterly finish, and overall craftsmanship.
+
+Primary request: Create a completely original vertical narrative illustration for the archetype of the Queen of Cups, expressing emotional intelligence, deep listening, intuition, compassionate boundaries, and calm inner authority without borrowing imagery or composition from existing tarot decks.
+
+Scene/backdrop: Inside the “Tidal Memory Archive,” an original chamber of the same interstellar lacquer civilization. Vast curved dark-lacquer ribs rise into a deep indigo dome. Between them float slow arcs of turquoise water and transparent mineral membranes as if gravity has become tidal. A large suspended sphere of living water and light occupies the right side; it contains only abstract concentric ripples and soft constellations, no human faces. The floor is a thin reflective plane crossed by restrained raised-gold channels. There is no seashore and no conventional palace.
+
+Subject: One mature adult woman, roughly in her forties, with a distinctive original face and believable human anatomy, complete full body visible including hands and feet. Place her on the left third, standing in a quiet three-quarter turn toward the water sphere. One open hand gently touches its surface; the other rests loosely near her sternum. Her expression is subtle and readable: she is listening deeply, holding sorrow with composure, neither smiling broadly nor appearing cold. She must look authoritative without being sexualized or idealized as a generic young fantasy princess.
+
+Original clothing: an invented ceremonial working garment from the same civilization—layered midnight-blue and blue-green robes integrated with practical fitted inner trousers and boots, asymmetrical dark lacquer shoulder and waist panels, translucent sleeves like thin water film, pearl-like mineral nodes, restrained raised-gold seam lines, and one muted coral interior layer connecting her visually to the first card. A small open crescent diadem made of dark mineral and pale light may hover behind one side of her head, but no familiar crown and no halo circle.
+
+Style/medium: High-end hand-painted story illustration with cinematic spatial depth. Shared deck material language: deep translucent colored lacquer, subtle embossed gold relief, mineral pigments, jewel-like highlights, tactile fabric, painterly atmosphere, and an emotionally believable face. Preserve the depth and craftsmanship of Image 1 without copying any object or pose. Not a flat icon, decorative poster, stained-glass panel, 3D render, anime image, or photorealistic photograph.
+
+Composition/framing: Portrait 2:3, full-bleed card-face art with no border. Filmic asymmetric scene composition. Environment occupies 55–65% of the frame. Create a flowing S-shaped story path from the figure’s face and touching hand to the suspended water sphere, through the reflected gold channels, and back into the distant archive. The first read at thumbnail size must be her face, gesture, and turquoise memory sphere; the second read reveals clothing and architecture. Do not center her and do not use altar-like symmetry.
+
+Lighting/mood: Deep indigo and midnight blue shared base, turquoise and malachite as the dominant card color, subtle violet atmosphere, warm natural skin tones, one muted coral accent, restrained antique gold limited to about 10%. Soft liquid light from the sphere shapes her face and hands. Mood: intimate, sacred, emotionally steady, not gloomy.
+
+Originality constraints: Entirely original concept. Do not imitate or reference any named artist, existing tarot deck, tarot card illustration, copyrighted character, course material, or recognizable franchise. Preserve the archetypal meaning only.
+Avoid: throne by the sea, conventional chalice or cup, crown, angel wings, mermaid, moon-and-ocean cliché, Rider-Waite-like pose or layout, Chinese imperial costume, European medieval queen, excessive jewelry, revealing clothing, glamour portrait, ornate gold frame, title text, numbers, letters, readable writing, logo, watermark, cropped body, hidden feet, extra limbs, malformed hands, centered static pose, excessive gold, black-and-gold emblem look, cyberpunk neon overload.`;
+
+const FIVE_OF_PENTACLES_ORIGINAL_PROMPT = String.raw`Use case: stylized-concept
+Asset type: preview-only original tarot card face concept, third of three representative samples
+Input images: Image 1 and Image 2 are style-system and shared-world references only. Do not edit them, copy their compositions, repeat their characters, reuse the star gate, floating bridge, memory sphere, or archive chamber. Create an entirely new multi-person scene and new characters while preserving only the same original interstellar civilization, deep-indigo universe, dark colored lacquer, restrained raised-gold relief, mineral-pigment color, cinematic painterly depth, and craftsmanship.
+
+Primary request: Create a completely original vertical narrative illustration for the archetype of the Five of Pentacles, expressing material hardship, exclusion, damaged security, mutual support, and a real but understated path toward help. It must validate a believable multi-person scene and an original suit-symbol system without borrowing imagery or composition from existing tarot decks.
+
+Scene/backdrop: The “Resource Ring District” of the same lacquer-and-light civilization during a long power failure. A huge curved energy-distribution corridor crosses a deep indigo void above a dim city. Its dark lacquer floor is fractured and cold, its raised-gold channels mostly extinguished. Fine translucent mineral dust moves sideways through the air—crystalline debris, not snow. In the upper left, a broken overhead energy lattice contains exactly five distinct faceted “star-core seals”: five dark amber mineral discs with orbital grooves, arranged as an incomplete constellation. Four are extinguished; exactly one retains a faint warm internal glow. These five star-core seals are the original visual equivalent of the Pentacles suit; they must not be coins, pentagrams, or familiar occult symbols.
+
+Subjects and action: Three clearly distinct adults with believable anatomy and readable relationships, all belonging to the same civilization but not repeating the people in Images 1 or 2.
+1) In the lower-left foreground, an older maintenance worker in worn dark lacquer work gear has a damaged mechanical leg brace and is struggling to walk.
+2) Beside them, a younger courier supports their weight with one arm and uses the other to hold a torn translucent heat-cloth around both bodies. Their posture shows effort and mutual trust, not theatrical despair.
+3) In the middle-right distance, a third community keeper stands at an opening shelter membrane, holding it open and extending one hand toward them. A small pool of muted amber light from the refuge reaches across part of the broken floor but has not yet reached the pair.
+Show the complete bodies of all three characters including hands and feet. Clothing is practical original interstellar workwear: layered fabric, dark lacquer protection panels, mineral fasteners, restrained gold repair seams, worn boots, diverse ages and faces. No beggar stereotypes and no glamorous heroic poses.
+
+Style/medium: High-end hand-painted narrative illustration with cinematic spatial depth. Deep translucent colored lacquer surfaces, subtle embossed gold relief, tactile worn fabric, mineral-pigment atmosphere, jewel-like but restrained highlights, believable faces, hands, weathering, and material damage. Preserve the shared-world quality of Images 1 and 2 without copying any object, pose, face, or layout. Not a flat icon, decorative poster, stained-glass panel, 3D render, anime image, or photorealistic photograph.
+
+Composition/framing: Portrait 2:3, full-bleed card-face art with no border. Filmic asymmetric scene composition. Environment occupies 55–65% of the image. Use a strong diagonal story path from the five dim star-core seals at upper left, down through the two struggling figures in the lower-left-to-center foreground, then toward the warm refuge and reaching third figure at middle right. The first read at thumbnail size must be the supported pair and the distant warm opening; the second read reveals exactly five suit seals and the broken infrastructure. Maintain clear silhouette separation among all three bodies. Do not center the group and do not use altar-like symmetry.
+
+Lighting/mood and palette: Deep indigo and midnight blue shared base. This Pentacles card uses muted amber, oxidized green, smoke-violet, and a small coral repair-cloth accent. Restrained antique gold limited to about 10%; most gold channels are dim or broken. Cold blue ambient light dominates, while a narrow warm amber route from the refuge supplies quiet hope. Serious and humane, not melodramatic or horror.
+
+Originality constraints: Entirely original concept. Do not imitate or reference any named artist, existing tarot deck, tarot card illustration, copyrighted character, course material, or recognizable franchise. Preserve the archetypal meaning only.
+Avoid: church or stained-glass window, snowstorm, two beggars, crutches, conventional coins, pentagrams, five-pointed stars, medieval poverty scene, Rider-Waite-like pose or layout, throne, star gate, floating stepping-stone bridge, giant water sphere, Chinese historical costume, European medieval clothing, excessive jewelry, glamour pose, ornate gold frame, title text, numbers, letters, readable writing, logo, watermark, cropped bodies, hidden feet, extra limbs, duplicated people, malformed hands, centered static group, excessive gold, black-and-gold emblem look, cyberpunk neon overload.`;
+
+type ApprovedTarotSample = {
   cardId: 1 | 49 | 69;
   createdAt: "2026-07-13";
   generator: "OpenAI built-in image generation (model version not exposed)";
@@ -7,6 +68,8 @@ export type ApprovedTarotSample = {
   sourceSha256: string;
 };
 
-export const APPROVED_TAROT_SAMPLES: Partial<
-  Record<1 | 49 | 69, ApprovedTarotSample>
-> = {};
+export const APPROVED_TAROT_SAMPLES: Record<1 | 49 | 69, ApprovedTarotSample> = {
+  1: { cardId: 1, createdAt: "2026-07-13", generator: "OpenAI built-in image generation (model version not exposed)", prompt: FOOL_ORIGINAL_PROMPT, internalReferenceCardIds: [], sourceSha256: "c0fd371caea23fa915a1934346051d1b68958afb4799c8277be722866be530e4" },
+  49: { cardId: 49, createdAt: "2026-07-13", generator: "OpenAI built-in image generation (model version not exposed)", prompt: QUEEN_OF_CUPS_ORIGINAL_PROMPT, internalReferenceCardIds: [1], sourceSha256: "edc94455d1d0e29f6c58b9aed8ae9d84bb7db9814c427be0e37f95f06d15a7bc" },
+  69: { cardId: 69, createdAt: "2026-07-13", generator: "OpenAI built-in image generation (model version not exposed)", prompt: FIVE_OF_PENTACLES_ORIGINAL_PROMPT, internalReferenceCardIds: [1, 49], sourceSha256: "aacee379ad1177f0578789fde50f59d0bb3b28826bef4975d6295a0fda3676a7" }
+};
