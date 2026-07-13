@@ -4,8 +4,12 @@ export function parseLibraryCardId(raw: string) {
 }
 
 export function getAdjacentLibraryCardIds(cardId: number) {
+  if (!Number.isInteger(cardId) || cardId < 1 || cardId > 78) {
+    return { previousCardId: null, nextCardId: null };
+  }
+
   return {
-    previousCardId: cardId > 1 && cardId <= 78 ? cardId - 1 : null,
-    nextCardId: cardId >= 1 && cardId < 78 ? cardId + 1 : null
+    previousCardId: cardId === 1 ? null : cardId - 1,
+    nextCardId: cardId === 78 ? null : cardId + 1
   };
 }

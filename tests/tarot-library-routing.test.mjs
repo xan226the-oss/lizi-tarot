@@ -25,12 +25,31 @@ test("previous and next navigation stops at the deck boundaries", () => {
   assert.deepEqual(getAdjacentLibraryCardIds(78), { previousCardId: 77, nextCardId: null });
 });
 
+test("previous and next navigation rejects invalid numeric ids", () => {
+  for (const invalid of [0, 79, -1, 1.5, Number.NaN, Number.POSITIVE_INFINITY]) {
+    assert.deepEqual(
+      getAdjacentLibraryCardIds(invalid),
+      { previousCardId: null, nextCardId: null },
+      String(invalid)
+    );
+  }
+});
+
 test("server-side completion count reports only real WebP ids", async () => {
   const root = await mkdtemp(join(tmpdir(), "tarot-library-assets-"));
   const cards = join(root, "public/images/tarot/cards");
+
+  assert.deepEqual(getAvailableTarotCardIds(root), []);
+
   await mkdir(cards, { recursive: true });
   await writeFile(join(cards, "1.webp"), "fixture");
   await writeFile(join(cards, "49.webp"), "fixture");
+  await writeFile(join(cards, "0.webp"), "fixture");
+  await writeFile(join(cards, "79.webp"), "fixture");
+  await writeFile(join(cards, "01.webp"), "fixture");
+  await writeFile(join(cards, "3.png"), "fixture");
   await writeFile(join(cards, "not-a-card.webp"), "fixture");
+  await mkdir(join(cards, "2.webp"));
+
   assert.deepEqual(getAvailableTarotCardIds(root), [1, 49]);
 });
