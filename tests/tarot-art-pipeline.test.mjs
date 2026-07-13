@@ -26,6 +26,10 @@ async function independentSha256(path) {
   return createHash("sha256").update(await readFile(path)).digest("hex");
 }
 
+function independentUtf8Sha256(value) {
+  return createHash("sha256").update(value, "utf8").digest("hex");
+}
+
 async function writeSource(root, cardId, {
   width = 1024,
   height = 1536,
@@ -96,6 +100,9 @@ test("approved samples preserve known source hashes and original inputs", () => 
   assert.deepEqual(APPROVED_TAROT_SAMPLES[1].internalReferenceCardIds, []);
   assert.deepEqual(APPROVED_TAROT_SAMPLES[49].internalReferenceCardIds, [1]);
   assert.deepEqual(APPROVED_TAROT_SAMPLES[69].internalReferenceCardIds, [1, 49]);
+  assert.equal(independentUtf8Sha256(APPROVED_TAROT_SAMPLES[1].prompt), "5a71b90e7ec621a9667b07f746c01beef2602e7b228ee6862e1e2af50111a665");
+  assert.equal(independentUtf8Sha256(APPROVED_TAROT_SAMPLES[49].prompt), "a7191e187296c0f1412a02720351e3b1290be3adb7572defc1c1e7baa92a4161");
+  assert.equal(independentUtf8Sha256(APPROVED_TAROT_SAMPLES[69].prompt), "9489fa0355e692e2eb57ba1eee4cbae35152a0c8c36cfb328487ee3284e540b6");
   assert.ok(APPROVED_TAROT_SAMPLES[1].prompt.startsWith("Use case: stylized-concept"));
   assert.match(APPROVED_TAROT_SAMPLES[49].prompt, /Tidal Memory Archive/);
   assert.match(APPROVED_TAROT_SAMPLES[69].prompt, /exactly five distinct faceted/);
