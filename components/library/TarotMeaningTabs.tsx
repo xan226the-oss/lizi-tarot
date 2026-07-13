@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useId, useRef, useState, type KeyboardEvent } from "react";
 
 import styles from "./Library.module.css";
 
@@ -13,18 +13,15 @@ type Orientation = "upright" | "reversed";
 
 const meaningTabs = {
   upright: {
-    label: "正位",
-    tabId: "meaning-tab-upright",
-    panelId: "meaning-panel-upright"
+    label: "正位"
   },
   reversed: {
-    label: "逆位",
-    tabId: "meaning-tab-reversed",
-    panelId: "meaning-panel-reversed"
+    label: "逆位"
   }
 } as const;
 
 export function TarotMeaningTabs({ upright, reversed }: TarotMeaningTabsProps) {
+  const idPrefix = useId();
   const [selected, setSelected] = useState<Orientation>("upright");
   const uprightTab = useRef<HTMLButtonElement>(null);
   const reversedTab = useRef<HTMLButtonElement>(null);
@@ -43,10 +40,10 @@ export function TarotMeaningTabs({ upright, reversed }: TarotMeaningTabsProps) {
   }
 
   return (
-    <section className={styles.meaningSection} aria-labelledby="meaning-heading">
+    <section className={styles.meaningSection} aria-labelledby={`${idPrefix}-meaning-heading`}>
       <div className={styles.sectionHeadingRow}>
         <p className={styles.sectionIndex}>解读档案</p>
-        <h2 id="meaning-heading" className={styles.sectionHeading}>
+        <h2 id={`${idPrefix}-meaning-heading`} className={styles.sectionHeading}>
           牌义双面
         </h2>
       </div>
@@ -54,18 +51,20 @@ export function TarotMeaningTabs({ upright, reversed }: TarotMeaningTabsProps) {
       <div className={styles.meaningTabList} role="tablist" aria-label="选择牌的正逆位含义">
         {(Object.keys(meaningTabs) as Orientation[]).map((orientation) => {
           const tab = meaningTabs[orientation];
+          const tabId = `${idPrefix}-meaning-tab-${orientation}`;
+          const panelId = `${idPrefix}-meaning-panel-${orientation}`;
           const isSelected = selected === orientation;
 
           return (
             <button
               key={orientation}
               ref={orientation === "upright" ? uprightTab : reversedTab}
-              id={tab.tabId}
+              id={tabId}
               className={styles.meaningTab}
               type="button"
               role="tab"
               aria-selected={isSelected}
-              aria-controls={tab.panelId}
+              aria-controls={panelId}
               tabIndex={isSelected ? 0 : -1}
               onClick={() => setSelected(orientation)}
               onKeyDown={handleKeyDown}
@@ -82,16 +81,17 @@ export function TarotMeaningTabs({ upright, reversed }: TarotMeaningTabsProps) {
           ["reversed", reversed]
         ] as const
       ).map(([orientation, meaning]) => {
-        const tab = meaningTabs[orientation];
+        const tabId = `${idPrefix}-meaning-tab-${orientation}`;
+        const panelId = `${idPrefix}-meaning-panel-${orientation}`;
         const isSelected = selected === orientation;
 
         return (
           <div
             key={orientation}
-            id={tab.panelId}
+            id={panelId}
             className={styles.meaningPanel}
             role="tabpanel"
-            aria-labelledby={tab.tabId}
+            aria-labelledby={tabId}
             tabIndex={isSelected ? 0 : -1}
             hidden={!isSelected}
           >

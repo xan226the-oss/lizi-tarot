@@ -95,21 +95,23 @@ test("detail route statically generates numeric ids and rejects missing data", a
 
 test("meaning switch is an accessible local tab set", async () => {
   const source = await readProjectFile("components/library/TarotMeaningTabs.tsx");
+  assert.match(source, /useId/);
   assert.match(source, /role="tablist"/);
   assert.match(source, /role="tab"/);
   assert.match(source, /aria-selected/);
   assert.match(source, /aria-controls/);
   assert.match(source, /role="tabpanel"/);
   assert.match(source, /aria-labelledby/);
-  assert.match(source, /meaning-tab-upright/);
-  assert.match(source, /meaning-tab-reversed/);
-  assert.match(source, /meaning-panel-upright/);
-  assert.match(source, /meaning-panel-reversed/);
+  assert.match(source, /idPrefix/);
+  assert.match(source, /meaning-tab-\$\{orientation\}/);
+  assert.match(source, /meaning-panel-\$\{orientation\}/);
   assert.match(source, /ArrowLeft/);
   assert.match(source, /ArrowRight/);
   assert.match(source, /\.focus\(\)/);
   assert.match(source, /正位/);
   assert.match(source, /逆位/);
+  assert.doesNotMatch(source, /tabId:\s*"meaning-tab-(?:upright|reversed)"/);
+  assert.doesNotMatch(source, /panelId:\s*"meaning-panel-(?:upright|reversed)"/);
   assert.doesNotMatch(source, /useRouter|useSearchParams|rotate/);
 });
 
@@ -133,14 +135,17 @@ test("story panel exposes story, characters, location and symbols", async () => 
 });
 
 test("detail page has a useful 404 and responsive archive layout", async () => {
-  const [notFound, css] = await Promise.all([
+  const [notFound, reachableNotFound, css] = await Promise.all([
     readProjectFile("app/library/[cardId]/not-found.tsx"),
+    readProjectFile("app/not-found.tsx"),
     readProjectFile("components/library/Library.module.css")
   ]);
-  assert.match(notFound, /没有找到这张牌/);
-  assert.match(notFound, /牌的编号不存在，或牌库资料尚未完成。/);
-  assert.match(notFound, /href="\/library"/);
-  assert.match(notFound, /href="\/"/);
+  for (const source of [notFound, reachableNotFound]) {
+    assert.match(source, /没有找到这张牌/);
+    assert.match(source, /牌的编号不存在，或牌库资料尚未完成。/);
+    assert.match(source, /href="\/library"/);
+    assert.match(source, /href="\/"/);
+  }
   assert.match(css, /\.detailLayout/);
   assert.match(css, /grid-template-columns:\s*minmax\(280px, 0\.86fr\) minmax\(0, 1\.14fr\)/);
   assert.match(css, /max-width:\s*480px/);
