@@ -106,12 +106,27 @@ export function createLibraryIntentController(initialFilters: LibraryFilterState
     replace(nextFilters: LibraryFilterState) {
       return setIntent(nextFilters);
     },
+    restore(restoredFilters: LibraryFilterState) {
+      const normalizedRestored = normalizeLibraryFilters(restoredFilters);
+
+      observedKey = libraryFilterKey(normalizedRestored);
+      pendingKey = null;
+      intent = normalizedRestored;
+      emit();
+      return intent;
+    },
     observe(observedFilters: LibraryFilterState) {
       const normalizedObserved = normalizeLibraryFilters(observedFilters);
-      observedKey = libraryFilterKey(normalizedObserved);
+      const nextObservedKey = libraryFilterKey(normalizedObserved);
 
-      if (pendingKey !== null && observedKey !== pendingKey) return intent;
+      if (pendingKey !== null && nextObservedKey !== pendingKey) {
+        observedKey = nextObservedKey;
+        return intent;
+      }
 
+      if (pendingKey === null && nextObservedKey === observedKey) return intent;
+
+      observedKey = nextObservedKey;
       pendingKey = null;
       intent = normalizedObserved;
       emit();

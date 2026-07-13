@@ -23,6 +23,14 @@ test("browser owns URL-derived local filtering without an API request", async ()
   assert.doesNotMatch(source, /fetch\(|axios|\/api\//);
 });
 
+test("browser treats popstate as an authoritative restore and removes its listener", async () => {
+  const source = await readProjectFile("components/library/LibraryBrowser.tsx");
+  assert.match(source, /window\.addEventListener\("popstate"/);
+  assert.match(source, /window\.removeEventListener\("popstate"/);
+  assert.match(source, /window\.location\.search/);
+  assert.match(source, /intentController\.restore/);
+});
+
 test("card grid exposes image, names, category and keywords without hover-only copy", async () => {
   const [card, grid] = await Promise.all([
     readProjectFile("components/library/TarotLibraryCard.tsx"),

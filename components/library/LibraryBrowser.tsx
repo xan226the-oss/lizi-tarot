@@ -52,6 +52,19 @@ export function LibraryBrowser({ cards, readyImageCount }: LibraryBrowserProps) 
     });
   }, [intentController, urlFilters.q, urlFilters.arcana, urlFilters.suit]);
 
+  useEffect(() => {
+    function restoreFromLocation() {
+      intentController.restore(
+        readLibraryFilters(new URLSearchParams(window.location.search))
+      );
+    }
+
+    window.addEventListener("popstate", restoreFromLocation);
+    return () => {
+      window.removeEventListener("popstate", restoreFromLocation);
+    };
+  }, [intentController]);
+
   const filteredCards = useMemo(
     () =>
       filterLibraryCards(cards, {

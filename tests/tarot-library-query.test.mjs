@@ -221,3 +221,42 @@ test("repeating the latest pending href ignores older different commits and then
     suit: "all"
   });
 });
+
+test("authoritative restore cancels pending intent and leaves later commits functional", () => {
+  const controller = createLibraryIntentController({
+    q: "",
+    arcana: "all",
+    suit: "all"
+  });
+  let notifications = 0;
+  const unsubscribe = controller.subscribe(() => {
+    notifications += 1;
+  });
+
+  controller.patch({ arcana: "major" });
+  controller.patch({ suit: "cups" });
+  assert.equal(typeof controller.restore, "function");
+
+  controller.restore(filtersFromHref("/library?arcana=minor"));
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "",
+    arcana: "minor",
+    suit: "all"
+  });
+
+  const notificationsAfterRestore = notifications;
+  const restoredSnapshot = controller.getSnapshot();
+  controller.observe(filtersFromHref("/library?arcana=minor"));
+  assert.strictEqual(controller.getSnapshot(), restoredSnapshot);
+  assert.equal(notifications, notificationsAfterRestore);
+
+  const nextIntent = controller.patch({ suit: "wands" });
+  controller.observe(filtersFromHref(libraryHref(nextIntent)));
+  assert.deepEqual(controller.getSnapshot(), {
+    q: "",
+    arcana: "minor",
+    suit: "wands"
+  });
+
+  unsubscribe();
+});
