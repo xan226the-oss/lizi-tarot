@@ -16,6 +16,405 @@
     }
   },
   {
+    "cardId": 2,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 2; archetype 魔术师.\n\nPrimary scene: 工艺师在原火工坊把四路失衡能源汇入一台新生装置\n\nCharacters: 一名成年工艺师. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 原火工坊. Dominant color: 琥珀与孔雀蓝.\n\nUpright visual cue: 双手把分散资源化为可用结构\n\nReversed visual tension: 一路能源暗示操控过度会反噬\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Reduce antique gold to restrained raised-gold accents at about 10% of the image; keep deep indigo lacquer and amber/peacock-blue mineral pigments dominant. Make the craftsperson clearly distinct from both reference characters while preserving the four-energy workshop action, complete visible body, hands, and feet.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "9342f7fcef0a6d2eddd987391c8db08e1e8c5af1fdc861b663c4492699eba17c",
+    "webSha256": "ec152a73889750c9c321b02edcb667c7782e34ff336701d5bca92189c52705a7",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 3,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 3; archetype 女祭司.\n\nPrimary scene: 档案守门人拨开可见资料与隐秘记忆之间的半透明潮幕\n\nCharacters: 一名成年档案守门人. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 静潮档案井. Dominant color: 靛蓝与银紫.\n\nUpright visual cue: 安静凝视潮幕后真实纹理\n\nReversed visual tension: 潮幕折射出难辨的第二层影像\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Depict the tide veil as a tall irregular diagonal translucent sheet, not a sphere or circular archive object. Use a clearly different adult archive keeper with a different face, age, hair, garments, and gesture from both reference characters; keep the complete body, both hands, and both feet visible. Make silver-violet mineral pigment the dominant accent over deep indigo and avoid repeating the Queen of Cups composition.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "1b9d3d178fffa219e0e5868d499b1c4c3587590aaf4134fc449f2e74e1a86691",
+    "webSha256": "93a7e84552a111aa2279bfd1b15eb9ebea0e4bc8574ae2ede1fd43208f74577c",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 4,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 4; archetype 皇后.\n\nPrimary scene: 生态培育者让荒废轨道温室重新长出矿物花林\n\nCharacters: 一名成熟女性培育者与两名远景助手. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 轨道温室. Dominant color: 翡翠与珊瑚.\n\nUpright visual cue: 植群向她的照料展开\n\nReversed visual tension: 过密根系缠住一段灌溉渠\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: The two input images are style-system and shared-world references only. Do not repeat either reference character, face, hairstyle, pose, costume, or composition. Create a clearly distinct mature female cultivator with a new identity and practical greenhouse workwear; keep her complete body, hands, and feet visible, and keep both distant assistants anatomically complete. Emphasize the abandoned orbital greenhouse being reclaimed by emerald mineral flora and coral blossoms, with the overgrown irrigation channel clearly visible.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "8f02bb4818cca1b41d3853327825684b09a6c36d341f9d61b5bd022ca0b79efa",
+    "webSha256": "3adfd404ef2e1325b14c462706a726289cf9d74db22970fc1680cde68f1167d9",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 5,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 5; archetype 皇帝.\n\nPrimary scene: 城市构架师用发光网格稳定正在漂移的居住环\n\nCharacters: 一名中年构架师. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 天穹结构台. Dominant color: 暗红与冷金.\n\nUpright visual cue: 网格形成清楚边界与承重秩序\n\nReversed visual tension: 一处过硬节点出现应力裂纹\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "e97c72f8747630a516f440f007395e9fb723c2403c3011eb75d0ab7b12b5e96c",
+    "webSha256": "3e980025c1da5fbfb8af03b7ce246d2980d14f17f8eacbff08f032f6c5bc66aa",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 6,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 6; archetype 教皇.\n\nPrimary scene: 资深译师向年轻学徒打开会回应提问的活体文明档案\n\nCharacters: 一名老年译师与三名学徒. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 回声学宫. Dominant color: 靛青与暖白.\n\nUpright visual cue: 多代知识在共同阅读中传递\n\nReversed visual tension: 一页旧规则与现实产生冲突\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: The two input images are style-system and shared-world references only. Do not repeat either reference character, face, hairstyle, pose, costume, or composition. Create a clearly distinct elderly male translator and three visually distinct adult apprentices of varied ages and appearances, all with complete bodies, visible hands, and visible feet. Show them actively questioning a responsive living archive in a warm-white echo academy, with one obsolete rule visibly conflicting through non-textual imagery; avoid a static teacher-centered tableau.\nSecond corrective regeneration: Arrange all four characters in separated active standing poses with both hands and both feet fully unobstructed and clearly visible for each person. Do not let robes, furniture, archive elements, or other characters hide any hand or foot; keep generous floor space around every pair of feet.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "eaaa0593c801085f3c6aa737468e4a5e2e0b33e8984b47f8980759987f5b0dda",
+    "webSha256": "2703e6f74c786edb37e1eeef182d28ee2b967fcfa40cc4b6e85a575246ada2bd",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 7,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 7; archetype 恋人.\n\nPrimary scene: 两名来自不同轨道城的使者在分岔航桥上共同选择第三条新路线\n\nCharacters: 两名成年使者. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 双月航桥. Dominant color: 玫紫与青绿.\n\nUpright visual cue: 两人的手势和目光对齐同一路径\n\nReversed visual tension: 身后两条安全旧路仍在拉扯选择\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Break the mirror symmetry completely. Place one messenger in the lower-left foreground already stepping diagonally onto a narrow newly forming third route, and the other higher on the right reaching across an offset gap; preserve the two older safe routes pulling away behind them. Both characters must have different identities from the references and from each other, with both hands and both feet fully visible and unobstructed. Avoid a centered hand-touch, paired altar pose, or recognizable classic Lovers composition.\nSecond corrective regeneration: Give each messenger two clearly separated active arms, with all four hands fully visible against open negative space; no hand may be behind a torso, sleeve, cloak, or bridge. Keep both pairs of feet equally unobstructed while preserving the strongly offset diagonal composition and the newly chosen third route.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "01f53a8d1dfc7cf687a6d668ad11fa84a3447e38350491089a98125667ced352",
+    "webSha256": "34f03ea6696ba8382985d581873b17085dda8f53f081509c38ea29a6714ce774",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 8,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 8; archetype 战车.\n\nPrimary scene: 导航员驾驶轻型航舟穿过两股相反重力流\n\nCharacters: 一名成年导航员. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 风暴航道. Dominant color: 电蓝与琥珀.\n\nUpright visual cue: 身体与操纵面共同校准方向\n\nReversed visual tension: 舟尾两股力量仍可能撕开航线\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Use an open-deck lightweight skiff with no cockpit, seat, hull rim, or fabric hiding the navigator's body. Show a clearly distinct adult navigator standing in a wide dynamic stance on the deck, with both hands gripping two separated exposed controls and both feet fully visible and unobstructed. Preserve the two opposing electric-blue and amber gravity streams tearing past the stern and the active bodily calibration of the course.\nSecond corrective regeneration: The navigator must be a clearly distinct middle-aged woman with close-cropped hair, a different face and silhouette from both reference characters, fitted practical flight gear, and sturdy closed flight boots. Do not reuse the young star-walker's hair, robes, body type, or barefoot appearance; preserve the full unobstructed body and exposed dual controls.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "d5c19f3e1658a31593ce218b13a551cb20690db6dbd8bbc6a76312ad7fc6970e",
+    "webSha256": "7161aa0de131cf33a1903a3c8dd45880a1c5dc97a7254700b6a638a2a51cf6c3",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 9,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 9; archetype 力量.\n\nPrimary scene: 生态巡护者以呼吸和开放手势安抚失控的等离子巨兽\n\nCharacters: 一名成年巡护者与原创能量兽. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 黯兽林. Dominant color: 珊瑚红与深紫.\n\nUpright visual cue: 温和接近使巨兽光焰回落\n\nReversed visual tension: 巨兽胸腔仍保留未消散的躁动\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "46f1e4233434277dc18745e43863857c9aea77cccd5fc05a4f2d877678a8398c",
+    "webSha256": "43c9d4c2aa5262440bc1e75352c9f8ce83f966a79ef7c2406115eac58c2e5e63",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 10,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 10; archetype 隐士.\n\nPrimary scene: 信号守塔人独自在断联边境寻找一颗微弱回声星\n\nCharacters: 一名老年守塔人. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 星尘灯塔. Dominant color: 冷蓝与微金.\n\nUpright visual cue: 手中窄光找到远方回应\n\nReversed visual tension: 灯塔外巨大黑暗提示隔绝风险\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Avoid every recognizable Hermit-card composition and prop. Do not show a cloaked elder holding a lantern, lamp, staff, wand, or isolated summit pose. Create a distinct elderly border signal engineer in practical fitted tower workwear, standing off-center at a large angled receiver console with both hands operating separate controls and both feet visible; a narrow cold-blue instrument beam must locate the tiny distant echo star while the vast disconnected darkness occupies most of the frame.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "4e1dbae349b9797bfedbafe6ba746c78db369c4b46d1cb24e85f5bc4af122a6f",
+    "webSha256": "75f0ce57e8e244c1eca179983a065f5efb18db4d5fb4843d4d948094d7bde06c",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 11,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 11; archetype 命运之轮.\n\nPrimary scene: 四名维护者在轨道环城中转动巨型相位机构，让停滞城区重新接轨\n\nCharacters: 四名维护者. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 相位环枢纽. Dominant color: 紫晶与琥珀.\n\nUpright visual cue: 多人协作推动周期转向\n\nReversed visual tension: 一段回转齿轨仍脱离控制\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Show four visually distinct adult maintenance workers on four separated open platforms around the phase mechanism, with every complete body in view and both hands and both feet fully visible for each worker. No person may be behind, inside, cropped by, or obscured by a ring or gear. Vary ages, faces, hair, workwear, actions, and platform heights; keep their coordinated effort turning the purple-crystal mechanism while one detached return rail remains visibly out of control.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "a58461c6bbf8584e07f5f66a500648afd5acb695e637c9d9119f6a66af996d36",
+    "webSha256": "686088603a3dc3e40c362db98d36942cb957e3802aff1f5854a35b98b2e8bcd2",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 12,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 12; archetype 正义.\n\nPrimary scene: 裁定者在非对称证据桥上比对两份互相矛盾的光记录\n\nCharacters: 一名成年裁定者与两名当事人. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 因果议庭. Dominant color: 冰蓝与暗金.\n\nUpright visual cue: 透明证据层被逐一对齐\n\nReversed visual tension: 被遮挡的小片记录提示信息不全\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Break the tribunal symmetry completely. Place the adult adjudicator on a slanted bridge in the upper-left midground, stepping diagonally while aligning two offset translucent evidence sheets with both hands; place one claimant low in the right foreground and the other far back at center-left on separate bridge levels. All three characters must have distinct identities and complete unobstructed bodies, hands, and feet. Show one small evidence fragment visibly occluded, but avoid a central judge, paired flanking figures, scales, sword, throne, or recognizable classic Justice composition.\nSecond corrective regeneration: Give both claimants two clearly separated active arms, with all four claimant hands fully visible against open negative space; no hand may be behind a torso, sleeve, evidence sheet, railing, or bridge. Keep all six feet unobstructed, remove every hanging balance or scale-like device, and preserve the strongly offset three-level bridge composition.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "bb54639400b7884998426d793628efc0bd1028aaa83acf0bac67fde6dfcb45dd",
+    "webSha256": "41cd2983a0bfbd1152f174e2845faec0252b3facf87484534ca7ec0977e106bd",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 13,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 13; archetype 倒吊人.\n\nPrimary scene: 修复者自愿倒悬进入失重井，从反向视角发现隐藏裂缝\n\nCharacters: 一名成年修复者. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 重力反转井. Dominant color: 青紫与冷白.\n\nUpright visual cue: 放松姿态让新结构显现\n\nReversed visual tension: 连接索过紧暗示停留可能变成拖延\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Avoid the recognizable classic Hanged Man composition entirely. Do not suspend the repairer by one ankle, cross the legs, center the inverted body, or form a halo. Show a distinct adult repairer voluntarily descending head-first on a diagonal paired hip-harness into an off-center gravity-reversal well, body floating in a relaxed curved posture with both legs separated, both booted feet fully visible, and both hands reaching toward a newly revealed structural crack. The twin connection lines should visibly strain at one side without resembling a gallows or tree.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "d05cd3eb3e3b9b09dff181ce4c86469561d7ce49eefc985a357af9ac810f65b3",
+    "webSha256": "a96dd3e3ed1fd5e2919562712daf1aa2bd6745bdc807e9e56b81e33113e8dbc6",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 14,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 14; archetype 死神.\n\nPrimary scene: 旧城市外壳崩解时，迁徙者把活种送入新生舱\n\nCharacters: 三名不同年龄迁徙者. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 灰烬花园. Dominant color: 黑蓝与新绿.\n\nUpright visual cue: 新芽与前行队伍承接结束\n\nReversed visual tension: 一人回望旧壳显示放不下的代价\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: The references define only the shared material system, not character identity. Create three unmistakably different migrants: a short-haired elderly woman in fitted ash-garden workwear leading at upper right, a broad middle-aged man carrying the living seed capsule with both hands in the lower-left midground, and a young adult with a shaved head looking back toward the collapsing city shell while stepping forward. Keep all six hands and all six feet fully visible against open space, vary silhouettes and clothing, and avoid the faces, curled hairstyles, flowing robes, or poses of either reference character.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "df9b6c6bb627294e4136da8253c8545082b620318c27596641aa2f85ecfa753d",
+    "webSha256": "2038cf04c48510633810cd0035491d85d3575152a55e5ffb4b9e80880f7d0c2b",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 15,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 15; archetype 节制.\n\nPrimary scene: 流体工程师让灼热星浆与冷潮在生物反应桥中稳定汇流\n\nCharacters: 一名成年工程师. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 双潮汇流站. Dominant color: 青绿与橙红.\n\nUpright visual cue: 两种能量形成均匀新流体\n\nReversed visual tension: 边缘溅出的过量流体提示失衡\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: The references define only lacquer, relief, pigment, and shared-world style. Create a clearly distinct middle-aged male fluid engineer with a shaved head, weathered face, compact build, fitted sleeveless protective workwear, gloves, and closed boots; do not reuse either reference face, hairstyle, robes, body type, or pose. Place him off-center in an active crouched stance operating two separated exposed bridge controls with both hands and both feet fully visible, while cyan cold tide and orange-red star slurry converge into one stable uniform new flow and a small excess splash escapes only at the far edge.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "25d78a17fbd5818416ea66379b771255b472b1c534fce62147706896aa7a350c",
+    "webSha256": "47257fa25e777f1101615ebe302bbf67d2826a4d66605d3047645d1c52d10e4c",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 16,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 16; archetype 恶魔.\n\nPrimary scene: 欲望炉前的人们被自己不断收紧的光索牵住，其中一人发现松扣\n\nCharacters: 三名成年人. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 深层资源炉. Dominant color: 暗红与烟紫.\n\nUpright visual cue: 清醒者触及可自行打开的扣环\n\nReversed visual tension: 另两人仍主动拉紧光索\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Create three clearly different adults rather than repeated dark-haired robed figures: a stocky older woman mechanic with cropped gray hair in practical overalls at lower left discovering and opening her loose buckle; a tall bald young man in fitted work gear at upper right pulling his own light tether tighter; and a short middle-aged woman with braided hair at far left actively tightening a separate tether. Separate them on three offset floor levels with all six hands and all six booted feet fully visible against open space; no cord, robe, body, or machinery may obscure a hand or foot. Avoid horns, throne, central monster, chained couple symmetry, or any recognizable classic Devil composition.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "1abf26b93096a96c7ddf097729627170834d622be6aba1c8bda86eb0c281162b",
+    "webSha256": "726b874aa7d7cfbe026fa639e759911b30923202c0aef557cd8f92f0c36fbcb9",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 17,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 17; archetype 高塔.\n\nPrimary scene: 天塔被一束真实讯号从内部震裂，居民沿应急索有序撤离\n\nCharacters: 五名撤离者. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 断裂天塔. Dominant color: 电紫与火橙.\n\nUpright visual cue: 裂缝暴露隐藏的腐坏核心\n\nReversed visual tension: 坠落碎片和拥堵出口保留冲击感\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Show exactly five visually distinct adult evacuees on five separated, offset emergency-line stations: varied ages, genders, faces, hair, builds, and fitted evacuation workwear, with no repeated flowing robes or reference-character identities. Give each evacuee two clearly separated arms and legs; all ten hands and all ten booted feet must be fully visible against open sky or platform space, never hidden by rope, clothing, tower, debris, or another body. Preserve the internally split tower, exposed rotten core, falling fragments, and one visibly congested exit, but avoid lightning striking a crown, falling paired figures, or any recognizable classic Tower composition.\nSecond corrective regeneration: Show exactly five human figures total in the entire image and no background crowd, silhouettes, or partial people. Express the congested exit through jammed abandoned cargo cases and tangled emergency equipment, not additional humans. Keep the five evacuees on five offset open platforms, with all ten hands and all ten booted feet clearly unobstructed.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "2de691cc7af81f4ba7c224b2cf37c312762d80242420422df951f2ab521cad10",
+    "webSha256": "84d612e6d6dd90438db4b0ecf0175dda57eca3379af2ee6b6574486bd2ff2ec6",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 18,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 18; archetype 星星.\n\nPrimary scene: 疗愈者把发光种子撒入受污染的星髓湖，使水面出现微弱复苏\n\nCharacters: 一名成年疗愈者. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 星髓疗愈湖. Dominant color: 青蓝与银白.\n\nUpright visual cue: 种子形成通向远方的希望光路\n\nReversed visual tension: 湖底仍有大片暗区尚未恢复\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Avoid every recognizable classic Star-card composition: no nude or robed woman at water, no kneeling, no pouring vessels, no oversized star overhead, and no barefoot reference-like figure. Create a clearly distinct older male ecological healer with a shaved head, weathered face, compact build, fitted lake-restoration suit, gloves, and closed boots. Place him in a low off-center working stance on a mineral sampling gantry, releasing luminous seed granules from both fully visible hands into the polluted lake; keep both feet unobstructed. Let the recovering seed path run diagonally toward a small distant horizon beacon while a broad dark lake region remains visibly unrestored.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "caf6af907e8738ae75500984b74d5e0fba9f110b3afd57b2cc840dd450e27c4b",
+    "webSha256": "472c36146f5b433d51ee60f34c84ffc8b4bf9e9440c4d782ac69951b2cd719cc",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 19,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 19; archetype 月亮.\n\nPrimary scene: 两名侦测员在梦雾沼泽中辨认互相冲突的双重倒影\n\nCharacters: 两名成年侦测员. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 梦雾观测带. Dominant color: 月白与深紫.\n\nUpright visual cue: 一人用真实触感校准路径\n\nReversed visual tension: 倒影生成诱人的错误出口\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Avoid every recognizable classic Moon-card composition: no oversized moon, twin towers, central path, paired animals, or lantern-bearing robed wanderers. Create two clearly different adult field detectors in fitted marsh survey suits: an older Black woman with close-cropped gray hair on a low left mineral shelf, pressing one bare sensor palm to the solid surface while her other hand operates an exposed instrument; and a young East Asian man with short hair high at right, using both hands to compare two offset reflected exit images. Keep both complete bodies, all four hands, and all four closed boots fully visible above the water against open negative space. Make the false reflection exit alluring but visibly inconsistent with the tactile route.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "a66af98e5cb2c6adb622eb0cb6d04097409512e770caf9e73edd0d83b0f14426",
+    "webSha256": "2df4b1fe3ef89fdb9dea52686913e047f35fc2fce70edb52cd6875e5ae5d2331",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 20,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 20; archetype 太阳.\n\nPrimary scene: 一群孩子和照护者打开长期封闭的日核温室，让光照进公共花园\n\nCharacters: 三名儿童与两名成年人. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 日核温室. Dominant color: 暖金与珊瑚.\n\nUpright visual cue: 开放动作带来共享生命力\n\nReversed visual tension: 过曝边缘提示快乐也需节制\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Show exactly five people total—three children and two adults—with clearly varied faces, hair, ages, builds, and practical greenhouse workwear. Arrange them asymmetrically on five separated open garden stepping platforms: one adult operates the offset sun-core door with both hands, the other adult guides light with two exposed controls, and each child performs a different planting action. Keep all ten hands and all ten closed-shoe feet fully visible against open floor or dark foliage; no dress, plant, person, or doorway may hide an extremity. Retain deep indigo lacquer as the majority base, confine antique-gold relief to about 10%, use coral as the dominant accent, and limit the brilliant sun exposure to one edge rather than flooding the whole image.\nSecond corrective regeneration: Put all five people in separated upright standing or wide lunging poses with fitted trousers and short-sleeved practical workwear—no skirts, robes, kneeling, crouching, sitting, or overlapping figures. Every person must show two distinct hands and two distinct closed shoes in full, with generous empty dark floor around every pair of feet. Give the three children clearly different hair and silhouettes while preserving their three distinct planting actions on raised waist-high beds.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "0284c0607e065a5d1438d79dcf8f5c0ccd1c5dcb1e1ce047a6d72dc16e651f7c",
+    "webSha256": "ee707c976ae7abf3cb801fff0608a08cc8d58e54fe30928b708a2551530a7f4b",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 21,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 21; archetype 审判.\n\nPrimary scene: 沉睡舱群收到共同召集信号，人们依次醒来回应过去的承诺\n\nCharacters: 多年龄居民群体. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 回声召集港. Dominant color: 白金与群青.\n\nUpright visual cue: 醒来者主动走向汇合平台\n\nReversed visual tension: 一些舱门仍关闭显示逃避自省\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Show exactly six human figures total and no partial people inside pods. Create a visibly varied multigenerational group—elderly woman, elderly man, two middle-aged adults, one young adult, and one older child—with distinct faces, hair, builds, and fitted waking-port workwear; do not repeat either reference identity or flowing robes. Arrange all six on six separated asymmetric platform levels, actively walking toward one offset convergence deck, with all twelve hands and all twelve closed-shoe feet fully visible against open space. Show several empty open sleep pods and several fully closed pods without visible occupants; express the shared call as one oblique white-blue signal wave, not an angel, trumpet, resurrection tableau, or recognizable classic Judgement composition.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "eba31dcc91ffabcf734250e924aef6e291f237f19f9328bed7df3ff14d7f81be",
+    "webSha256": "d9afd1f89908b894a7b95066d5ede3b3385ed6fe4e98c188354743876bd95346",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
+    "cardId": 22,
+    "createdAt": "2026-07-14",
+    "generator": "OpenAI built-in image generation (model version not exposed)",
+    "prompt": "Use case: final production tarot card face for the original Particle deck.\n\nCard identity: canonical numeric cardId 22; archetype 世界.\n\nPrimary scene: 四个轨道城区的代表在环世界合流城接通最后一段文明回路\n\nCharacters: 四名不同地区代表. Complete bodies, believable anatomy, visible hands and feet.\n\nLocation: 环世界合流城. Dominant color: 多彩矿物色与靛蓝.\n\nUpright visual cue: 回路闭合但视野通向下一片星域\n\nReversed visual tension: 最后一处接口尚需有人守护\n\nDo not force a repeated suit object; express this historical turning point through scene and action.\n\nRequired elements: portrait 2:3 full-bleed scene; complete visible characters including hands and feet; deep indigo shared base with one dominant color; restrained raised-gold structure at about 10%; asymmetric cinematic action with environment occupying 55–65%.\n\nStyle: high-end hand-painted cinematic story illustration from one original East-West interstellar mythic civilization; dark colored lacquer with raised gilded relief, mineral pigments, jewel-like highlights, deep indigo shared base, one dominant color, antique gold limited to about 10%.\n\nComposition: portrait 2:3, output 1024 × 1536, full-bleed, environment occupies 55–65%, asymmetric action, strong thumbnail read, no centered static pose and no altar-like symmetry.\n\nOriginality: entirely original. Do not imitate or reference any named artist, existing tarot deck, tarot illustration, copyrighted character, recognizable franchise, course material, or copyright-unknown input.\n\nAvoid: existing tarot deck imagery or composition; named artist imitation; copyrighted character or recognizable franchise; course material or copyright-unknown input; title, number, letters, readable writing, logo, watermark or card border; centered static pose or altar-like symmetry; cropped body, hidden feet, malformed hands or extra limbs; excessive gold, black-and-gold emblem look or cyberpunk neon overload.\n\nNo title, number, border, logo, or watermark.\nCorrective regeneration: Depict exactly four visibly distinct regional infrastructure representatives in fitted practical workwear, not robes, standing on four separated asymmetric maintenance gantries while actively carrying and locking four differently colored conductor segments into one offset final junction. Keep all eight hands and all eight closed-shoe feet fully visible against open floor gaps. The nearly closed civilization circuit must be an angular broken line spanning the city, with one small unlatched service interface under the guard of one representative; open the upper-right background diagonally onto a new star field. Do not use a circle, ring, wreath, portal, central glowing human, hand-holding tableau, four corner emblems, or any recognizable classic World-card composition.\nSecond corrective regeneration: The entire image must contain exactly four humans total, all four being the conductor workers on the separated gantries; include no fifth guard, background person, distant silhouette, crew member, statue, or human-shaped figure anywhere. Make the upper-right worker both hold their conductor with one hand and visibly monitor the small unlatched service interface beside that same gantry with the other hand, so one of the four workers fulfills the guard role. Preserve the successful angular four-conductor action, practical fitted clothing, fully visible eight hands and eight closed-shoe feet, asymmetric city depth, and diagonal opening to the new star field.\n",
+    "externalInputs": [],
+    "internalReferenceCardIds": [
+      1,
+      49
+    ],
+    "sourceSha256": "3bb6a785215d578a406e05bcfa92f41682ccb526afac9c08fa6d16d85812bb4c",
+    "webSha256": "6da22c242d35f8cd56d339b479902bcc8e5193034bafcd7333a5caa9727981e4",
+    "humanReview": {
+      "anatomy": "pass",
+      "symbolCount": "not-applicable",
+      "styleConsistency": "pass",
+      "forbiddenElements": "pass"
+    }
+  },
+  {
     "cardId": 49,
     "createdAt": "2026-07-13",
     "generator": "OpenAI built-in image generation (model version not exposed)",
