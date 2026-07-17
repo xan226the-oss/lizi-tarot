@@ -62,8 +62,8 @@ export default function HomePage() {
       <div className="relative z-10 grid min-h-[100dvh] grid-rows-[auto_minmax(0,1fr)_auto] px-5 py-5 sm:px-8 lg:px-10">
         <header className="mx-auto flex w-full max-w-7xl items-center justify-between">
           <Link href="/" className="group flex items-center gap-3" aria-label="粒子首页">
-            <ConstellationLogo className="transition duration-base group-hover:border-accent-gold-bright group-hover:shadow-gold-glow" />
-            <span className="font-serif text-2xl font-semibold tracking-[0.16em] text-text-primary">
+            <ConstellationLogo className="transition duration-base group-hover:text-accent-gold-bright" />
+            <span className="font-serif text-2xl font-medium tracking-[0.1em] text-text-primary">
               粒子
             </span>
           </Link>

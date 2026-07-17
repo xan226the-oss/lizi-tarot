@@ -36,7 +36,7 @@ const TAROT_CLI_SCHEMAS: Record<TarotCliCommand, TarotCliSchema> = {
     ],
     flagOptions: []
   },
-  verify: { valueOptions: SELECTOR_OPTIONS, flagOptions: ["--strict"] },
+  verify: { valueOptions: SELECTOR_OPTIONS, flagOptions: ["--strict", "--runtime-only"] },
   "contact-sheet": { valueOptions: SELECTOR_OPTIONS, flagOptions: [] }
 };
 

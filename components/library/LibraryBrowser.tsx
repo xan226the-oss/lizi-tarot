@@ -77,7 +77,7 @@ export function LibraryBrowser({ cards, readyImageCount }: LibraryBrowserProps) 
 
   const completionCopy =
     readyImageCount === 78
-      ? "78 张原创牌组"
+      ? "78 张"
       : `${readyImageCount} / 78 张牌面已就绪 · 开发预览`;
 
   function hrefFor(nextFilters: LibraryFilterState) {
@@ -103,15 +103,13 @@ export function LibraryBrowser({ cards, readyImageCount }: LibraryBrowserProps) 
   return (
     <div className={styles.browser}>
       <section className={styles.intro} aria-labelledby="library-title">
-        <div>
+        <div className={styles.introIdentity}>
+          <p className={styles.introEyebrow}>档案目录</p>
           <h1 id="library-title" className={styles.title}>
-            原创塔罗牌库
+            牌库
           </h1>
           <p className={styles.completion}>{completionCopy}</p>
         </div>
-        <p className={styles.worldCopy}>
-          同一文明的 78 个历史切面：行动、情感、思想与现实在星际漆彩中彼此回响。
-        </p>
       </section>
 
       <LibraryFilters

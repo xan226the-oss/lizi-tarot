@@ -1,5 +1,2 @@
-import { ComingSoon } from "@/components/ui/ComingSoon";
-
-export default function CardChatPage() {
-  return <ComingSoon title="单聊对话" />;
-}
+import { notFound } from "next/navigation"; import { SingleCardChat } from "@/components/chat/SingleCardChat"; import { tarotCards,getTarotCardById } from "@/lib/tarot-cards"; import { getTarotLibraryEntry } from "@/lib/tarot-library"; import { getTarotChatPersona,isChatEligibleCard } from "@/lib/tarot-chat-personas"; import { parseChatCardId } from "@/lib/tarot-chat-contract";
+export const dynamicParams=false;export function generateStaticParams(){return tarotCards.filter(isChatEligibleCard).map(card=>({cardId:String(card.id)}));}export default function CardChatPage({params}:{params:{cardId:string}}){const id=parseChatCardId(params.cardId);const card=id===null?null:getTarotCardById(id);const entry=id===null?null:getTarotLibraryEntry(id);const persona=id===null?null:getTarotChatPersona(id);if(!card||!entry||!persona||!isChatEligibleCard(card))notFound();return <main><SingleCardChat cardId={card.id} cardName={card.name_cn} openingLine={persona.openingLine}/></main>;}

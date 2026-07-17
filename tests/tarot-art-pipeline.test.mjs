@@ -142,6 +142,24 @@ test("strict verification rejects unreviewed artwork", async () => {
   assert.match(result.errors.join("\n"), /human review/);
 });
 
+test("runtime verification accepts a reviewed published WebP without the local authoring archive", async () => {
+  const root = await fixtureRoot();
+  const result = await processCard(root, 2);
+  await reviewCard(root, 2);
+  await unlink(result.sourcePath);
+  await unlink(join(root, "artwork-source/tarot/prompts/2.txt"));
+
+  const verification = await verifyTarotArtwork({
+    ids: [2],
+    rootDir: root,
+    requirePassingReview: true,
+    runtimeOnly: true
+  });
+
+  assert.equal(verification.ok, true);
+  assert.deepEqual(verification.errors, []);
+});
+
 test("provenance stays numerically sorted and byte-idempotent across two IDs", async () => {
   const root = await fixtureRoot([2, 3]);
   await processCard(root, 3);
@@ -168,7 +186,7 @@ test("all six CLI schemas reject unknown arguments and preserve legal usage", ()
     ["prompts", ["--ids", "2", "--root", "/tmp/example"]],
     ["process", ["--batch", "major", "--created-at", "2026-07-13", "--generator", "test"]],
     ["review", ["--ids", "2", "--anatomy", "pass", "--symbol-count", "not-applicable", "--style-consistency", "pass", "--forbidden-elements", "pass"]],
-    ["verify", ["--ids", "2", "--strict"]],
+    ["verify", ["--ids", "2", "--strict", "--runtime-only"]],
     ["contact-sheet", ["--batch", "major", "--root", "/tmp/example"]]
   ];
   for (const [command, argv] of legal) assert.doesNotThrow(() => validate(command, argv));

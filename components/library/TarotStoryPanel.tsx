@@ -8,18 +8,11 @@ type TarotStoryPanelProps = {
 
 export function TarotStoryPanel({ entry }: TarotStoryPanelProps) {
   return (
-    <section className={styles.storySection} aria-labelledby="chronicle-heading">
-      <div className={styles.sectionHeadingRow}>
-        <p className={styles.sectionIndex}>场景记录</p>
-        <h2 id="chronicle-heading" className={styles.sectionHeading}>
-          文明编年
-        </h2>
-      </div>
-
+    <section className={styles.scenePanel} aria-label="场景记录">
       <p className={styles.storyCopy}>{entry.story}</p>
 
-      <dl className={styles.chronicle}>
-        <div className={styles.chronicleItem}>
+      <dl className={styles.sceneMeta}>
+        <div>
           <dt>人物</dt>
           <dd>
             <ul>
@@ -30,12 +23,12 @@ export function TarotStoryPanel({ entry }: TarotStoryPanelProps) {
           </dd>
         </div>
 
-        <div className={styles.chronicleItem}>
+        <div>
           <dt>地点</dt>
           <dd>{entry.location}</dd>
         </div>
 
-        <div className={styles.chronicleItem}>
+        <div>
           <dt>符号</dt>
           <dd>
             <ul>

@@ -3,12 +3,12 @@ import { notFound } from "next/navigation";
 
 import styles from "@/components/library/Library.module.css";
 import { TarotCardArtwork } from "@/components/library/TarotCardArtwork";
+import { TarotDetailContent } from "@/components/library/TarotDetailContent";
 import { TarotDetailNavigation } from "@/components/library/TarotDetailNavigation";
-import { TarotMeaningTabs } from "@/components/library/TarotMeaningTabs";
-import { TarotStoryPanel } from "@/components/library/TarotStoryPanel";
 import { ConstellationLogo } from "@/components/ui/ConstellationLogo";
 import { getTarotCardById } from "@/lib/tarot-cards";
 import { getTarotLibraryEntry } from "@/lib/tarot-library";
+import { getTarotLibraryReading } from "@/lib/tarot-library-readings";
 import { getTarotArtworkTone } from "@/lib/tarot-library-query";
 import { getAdjacentLibraryCardIds, parseLibraryCardId } from "@/lib/tarot-library-routing";
 
@@ -38,8 +38,9 @@ export default function TarotDetailPage({ params }: TarotDetailPageProps) {
 
   const card = getTarotCardById(cardId);
   const entry = getTarotLibraryEntry(cardId);
+  const reading = getTarotLibraryReading(cardId);
 
-  if (!card || !entry) notFound();
+  if (!card || !entry || !reading) notFound();
 
   const { previousCardId, nextCardId } = getAdjacentLibraryCardIds(cardId);
   const previousCard = previousCardId === null ? null : getTarotCardById(previousCardId);
@@ -50,8 +51,8 @@ export default function TarotDetailPage({ params }: TarotDetailPageProps) {
       : `${suitLabels[card.suit ?? ""] ?? "小阿尔卡纳"} · 小阿尔卡纳`;
 
   return (
-    <main className={styles.page}>
-      <div className={styles.frame}>
+    <main className={`${styles.page} ${styles.detailPage}`}>
+      <div className={`${styles.frame} ${styles.detailFrame}`}>
         <header className={styles.siteHeader}>
           <Link href="/" className={styles.brand} aria-label="返回粒子首页">
             <ConstellationLogo />
@@ -77,7 +78,7 @@ export default function TarotDetailPage({ params }: TarotDetailPageProps) {
               alt={entry.imageAlt}
               cardName={card.name_cn}
               tone={getTarotArtworkTone(card)}
-              sizes="(max-width: 767px) 92vw, (max-width: 1279px) 42vw, 480px"
+              sizes="(max-width: 1023px) 92vw, 22rem"
               priority
               className={styles.detailArtwork}
             />
@@ -97,11 +98,7 @@ export default function TarotDetailPage({ params }: TarotDetailPageProps) {
               </ul>
             </header>
 
-            <TarotMeaningTabs
-              upright={card.meaning_upright}
-              reversed={card.meaning_reversed}
-            />
-            <TarotStoryPanel entry={entry} />
+            <TarotDetailContent entry={entry} reading={reading} />
             <TarotDetailNavigation previousCard={previousCard} nextCard={nextCard} />
           </div>
         </article>

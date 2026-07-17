@@ -1,0 +1,4 @@
+import assert from "node:assert/strict"; import { readFile } from "node:fs/promises"; import test from "node:test";
+const readRoute=()=>readFile(new URL("../app/api/chat/[cardId]/messages/route.ts",import.meta.url),"utf8");
+test("chat route owns an isolated, guarded model boundary",async()=>{const route=await readRoute();for(const item of ["parseChatCardId","parseChatMessageRequest","classifyChatRisk","getSafetyFallback","guardChatReply","buildTarotChatMessages","requestTarotChatCompletion","DEEPSEEK_CHAT_MODEL"])assert.match(route,new RegExp(item));assert.match(route,/runtime\s*=\s*"nodejs"/);assert.doesNotMatch(route,/normalizeInterpretationRequest|buildDeepSeekMessages|localStorage|sessionStorage/);});
+test("chat route contains only public user-facing failures",async()=>{const route=await readRoute();assert.match(route,/聊天服务暂时不可用/);assert.match(route,/请求较多/);assert.doesNotMatch(route,/API Key|Bearer |api\.deepseek\.com/);});

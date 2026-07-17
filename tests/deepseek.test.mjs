@@ -114,6 +114,26 @@ test("parses a valid combined interpretation", () => {
   );
 });
 
+test("parses an interpretation wrapped in a JSON code fence", () => {
+  assert.deepEqual(
+    parseDeepSeekContent(
+      '```json\n{"interpretation":"牌阵提示你先整理边界，再把注意力放回可控的选择。"}\n```'
+    ),
+    { interpretation: "牌阵提示你先整理边界，再把注意力放回可控的选择。" }
+  );
+});
+
+test("classifies malformed model JSON without retaining its content", () => {
+  assert.throws(
+    () => parseDeepSeekContent("not-json"),
+    (error) => {
+      assert.ok(error instanceof Error);
+      assert.equal(error.code, "invalid-json");
+      return true;
+    }
+  );
+});
+
 test("rejects empty, malformed, missing and overlong model content", () => {
   assert.throws(() => parseDeepSeekContent(""), /empty/i);
   assert.throws(() => parseDeepSeekContent("not-json"), /JSON/i);

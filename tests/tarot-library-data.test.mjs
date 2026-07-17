@@ -6,6 +6,7 @@ import {
   getTarotLibraryEntry,
   tarotLibraryEntries
 } from "../lib/tarot-library.ts";
+import { tarotLibraryReadings } from "../lib/tarot-library-readings.ts";
 import { tarotCards } from "../lib/tarot-cards.ts";
 import { buildTarotLibraryEntries } from "../scripts/tarot-art/generate-library-data.ts";
 
@@ -89,4 +90,11 @@ test("getter returns the matching runtime entry for every canonical card id", ()
 test("getter returns null for unknown ids", () => {
   assert.equal(getTarotLibraryEntry(0), null);
   assert.equal(getTarotLibraryEntry(79), null);
+});
+
+test("full library readings are a separate library-only layer", () => {
+  assert.equal(tarotCards.length, 78);
+  assert.equal(tarotLibraryReadings.length, 78);
+  assert.notEqual(tarotLibraryReadings[0].upright, tarotCards[0].meaning_upright);
+  assert.notEqual(tarotLibraryReadings[0].reversed, tarotCards[0].meaning_reversed);
 });

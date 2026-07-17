@@ -1,5 +1,2 @@
-import { ComingSoon } from "@/components/ui/ComingSoon";
-
-export default function ChatPage() {
-  return <ComingSoon title="聊天入口" />;
-}
+import { ChatLobby } from "@/components/chat/ChatLobby"; import { tarotCards } from "@/lib/tarot-cards"; import { getTarotLibraryEntry } from "@/lib/tarot-library"; import { getTarotChatPersona,isChatEligibleCard } from "@/lib/tarot-chat-personas";
+export default function ChatPage(){const records=tarotCards.filter(isChatEligibleCard).map(card=>{const entry=getTarotLibraryEntry(card.id);const persona=getTarotChatPersona(card.id);if(!entry||!persona)throw new Error("Missing trusted chat card data");return{card,entry,persona};});return <ChatLobby records={records}/>;}

@@ -9,6 +9,25 @@ export type DeepSeekReadingResponse = {
   interpretation: string;
 };
 
+export type DeepSeekContentErrorCode =
+  | "empty-content"
+  | "invalid-json"
+  | "missing-interpretation"
+  | "interpretation-too-long";
+
+export class DeepSeekContentError extends Error {
+  readonly code: DeepSeekContentErrorCode;
+
+  constructor(
+    code: DeepSeekContentErrorCode,
+    message: string
+  ) {
+    super(message);
+    this.name = "DeepSeekContentError";
+    this.code = code;
+  }
+}
+
 export type InterpretationLengthProfile = {
   minCharacters: number;
   maxCharacters: number;
@@ -83,27 +102,47 @@ export function buildDeepSeekMessages(
 
 export function parseDeepSeekContent(content: string): DeepSeekReadingResponse {
   const trimmed = content.trim();
-  if (!trimmed) throw new Error("DeepSeek returned empty content");
+  if (!trimmed) {
+    throw new DeepSeekContentError(
+      "empty-content",
+      "DeepSeek returned empty content"
+    );
+  }
+
+  const codeFenceMatch = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+  const jsonContent = codeFenceMatch ? codeFenceMatch[1].trim() : trimmed;
 
   let parsed: unknown;
   try {
-    parsed = JSON.parse(trimmed);
+    parsed = JSON.parse(jsonContent);
   } catch {
-    throw new Error("DeepSeek returned invalid JSON");
+    throw new DeepSeekContentError(
+      "invalid-json",
+      "DeepSeek returned invalid JSON"
+    );
   }
 
   if (!parsed || typeof parsed !== "object") {
-    throw new Error("DeepSeek JSON did not contain an interpretation");
+    throw new DeepSeekContentError(
+      "missing-interpretation",
+      "DeepSeek JSON did not contain an interpretation"
+    );
   }
 
   const interpretation = (parsed as { interpretation?: unknown }).interpretation;
   if (typeof interpretation !== "string" || interpretation.trim().length === 0) {
-    throw new Error("DeepSeek JSON did not contain an interpretation");
+    throw new DeepSeekContentError(
+      "missing-interpretation",
+      "DeepSeek JSON did not contain an interpretation"
+    );
   }
 
   const normalized = interpretation.trim();
   if (normalized.length > 4000) {
-    throw new Error("DeepSeek interpretation exceeded maximum length");
+    throw new DeepSeekContentError(
+      "interpretation-too-long",
+      "DeepSeek interpretation exceeded maximum length"
+    );
   }
 
   return { interpretation: normalized };

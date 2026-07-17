@@ -2,6 +2,7 @@
   "name": "lizi-tarot",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,7 +20,7 @@
     "@mediapipe/tasks-vision": "^0.10.35",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
-    "next": "14.2.32",
+    "next": "^14.2.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.6.0"

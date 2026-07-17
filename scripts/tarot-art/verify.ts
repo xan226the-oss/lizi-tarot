@@ -22,6 +22,7 @@ type VerifyTarotArtworkOptions = {
   ids: number[];
   rootDir: string;
   requirePassingReview?: boolean;
+  runtimeOnly?: boolean;
 };
 
 function approvedSample(cardId: number) {
@@ -74,6 +75,7 @@ async function verifyCard(
   record: TarotArtProvenance | undefined,
   rootDir: string,
   requirePassingReview: boolean,
+  runtimeOnly: boolean,
   errors: string[]
 ) {
   const manifest = getTarotArtManifestEntry(cardId);
@@ -89,27 +91,31 @@ async function verifyCard(
     errors.push(`Card ${cardId} provenance ID does not match the manifest`);
   }
 
-  const sourcePath = join(rootDir, `artwork-source/tarot/${cardId}.png`);
   const webPath = join(rootDir, `public/images/tarot/cards/${cardId}.webp`);
+  const sample = approvedSample(cardId);
   let sourceSha256: string | undefined;
   let webSha256: string | undefined;
 
-  try {
-    const sourceMetadata = await sharp(sourcePath).metadata();
-    if (!sourceMetadata.width || !sourceMetadata.height) {
-      errors.push(`Card ${cardId} source dimensions are unreadable`);
-    } else {
-      if (sourceMetadata.width * 3 !== sourceMetadata.height * 2) {
-        errors.push(`Card ${cardId} source dimensions are not exact 2:3`);
+  if (!runtimeOnly) {
+    const sourcePath = join(rootDir, `artwork-source/tarot/${cardId}.png`);
+
+    try {
+      const sourceMetadata = await sharp(sourcePath).metadata();
+      if (!sourceMetadata.width || !sourceMetadata.height) {
+        errors.push(`Card ${cardId} source dimensions are unreadable`);
+      } else {
+        if (sourceMetadata.width * 3 !== sourceMetadata.height * 2) {
+          errors.push(`Card ${cardId} source dimensions are not exact 2:3`);
+        }
+        if (sourceMetadata.width < 1024 || sourceMetadata.height < 1536) {
+          errors.push(`Card ${cardId} source dimensions are below 1024 × 1536`);
+        }
       }
-      if (sourceMetadata.width < 1024 || sourceMetadata.height < 1536) {
-        errors.push(`Card ${cardId} source dimensions are below 1024 × 1536`);
-      }
+      sourceSha256 = await sha256File(sourcePath);
+      if (record.sourceSha256 !== sourceSha256) errors.push(`Card ${cardId} source hash mismatch`);
+    } catch (error) {
+      errors.push(`Card ${cardId} source file error: ${errorMessage(error)}`);
     }
-    sourceSha256 = await sha256File(sourcePath);
-    if (record.sourceSha256 !== sourceSha256) errors.push(`Card ${cardId} source hash mismatch`);
-  } catch (error) {
-    errors.push(`Card ${cardId} source file error: ${errorMessage(error)}`);
   }
 
   try {
@@ -126,26 +132,27 @@ async function verifyCard(
     errors.push(`Card ${cardId} runtime WebP file error: ${errorMessage(error)}`);
   }
 
-  const sample = approvedSample(cardId);
-  let expectedPrompt: string | undefined;
-  if (sample) {
-    expectedPrompt = sample.prompt;
-    if (sourceSha256 && sourceSha256 !== sample.sourceSha256) {
-      errors.push(`Card ${cardId} source hash does not match the approved sample`);
+  if (!runtimeOnly) {
+    let expectedPrompt: string | undefined;
+    if (sample) {
+      expectedPrompt = sample.prompt;
+      if (sourceSha256 && sourceSha256 !== sample.sourceSha256) {
+        errors.push(`Card ${cardId} source hash does not match the approved sample`);
+      }
+    } else {
+      const promptPath = join(rootDir, `artwork-source/tarot/prompts/${cardId}.txt`);
+      try {
+        expectedPrompt = await readFile(promptPath, "utf8");
+      } catch (error) {
+        errors.push(`Card ${cardId} prompt file error: ${errorMessage(error)}`);
+      }
     }
-  } else {
-    const promptPath = join(rootDir, `artwork-source/tarot/prompts/${cardId}.txt`);
-    try {
-      expectedPrompt = await readFile(promptPath, "utf8");
-    } catch (error) {
-      errors.push(`Card ${cardId} prompt file error: ${errorMessage(error)}`);
+    if (expectedPrompt !== undefined && !expectedPrompt.trim()) {
+      errors.push(`Card ${cardId} exact prompt must not be empty`);
     }
-  }
-  if (expectedPrompt !== undefined && !expectedPrompt.trim()) {
-    errors.push(`Card ${cardId} exact prompt must not be empty`);
-  }
-  if (expectedPrompt !== undefined && record.prompt !== expectedPrompt) {
-    errors.push(`Card ${cardId} provenance prompt does not match the exact generation prompt`);
+    if (expectedPrompt !== undefined && record.prompt !== expectedPrompt) {
+      errors.push(`Card ${cardId} provenance prompt does not match the exact generation prompt`);
+    }
   }
 
   if (!Array.isArray(record.externalInputs) || record.externalInputs.length !== 0) {
@@ -167,7 +174,8 @@ async function verifyCard(
 export async function verifyTarotArtwork({
   ids,
   rootDir,
-  requirePassingReview = false
+  requirePassingReview = false,
+  runtimeOnly = false
 }: VerifyTarotArtworkOptions) {
   const errors: string[] = [];
   let records: TarotArtProvenance[] = [];
@@ -183,6 +191,7 @@ export async function verifyTarotArtwork({
       records.find((record) => record.cardId === cardId),
       rootDir,
       requirePassingReview,
+      runtimeOnly,
       errors
     );
   }
@@ -197,7 +206,8 @@ async function main() {
   const result = await verifyTarotArtwork({
     ids,
     rootDir: parseRootDir(argv),
-    requirePassingReview: hasOption(argv, "--strict")
+    requirePassingReview: hasOption(argv, "--strict"),
+    runtimeOnly: hasOption(argv, "--runtime-only")
   });
   if (!result.ok) {
     for (const error of result.errors) console.error(error);

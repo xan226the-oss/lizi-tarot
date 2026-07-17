@@ -6,19 +6,22 @@ type ConstellationLogoProps = {
 
 export function ConstellationLogo({ className }: ConstellationLogoProps) {
   return (
-    <div
-      className={cn(
-        "relative h-9 w-9 rounded-full border border-accent-gold-30 bg-glass-bg",
-        className
-      )}
+    <svg
+      className={cn("h-9 w-9 text-accent-gold", className)}
+      viewBox="0 0 36 36"
+      fill="none"
       aria-hidden="true"
     >
-      <span className="absolute left-[9px] top-[10px] h-1.5 w-1.5 rounded-full bg-accent-gold-bright shadow-gold-glow" />
-      <span className="absolute left-[21px] top-[8px] h-1.5 w-1.5 rounded-full bg-accent-gold" />
-      <span className="absolute left-[15px] top-[22px] h-1.5 w-1.5 rounded-full bg-accent-gold" />
-      <span className="absolute left-[8px] top-[14px] h-px w-[14px] origin-left rotate-[-9deg] bg-accent-gold-70" />
-      <span className="absolute left-[20px] top-[12px] h-px w-[13px] origin-left rotate-[113deg] bg-accent-gold-60" />
-      <span className="absolute left-[12px] top-[17px] h-px w-[11px] origin-left rotate-[54deg] bg-accent-gold-50" />
-    </div>
+      <path
+        d="M6 23.5C11.5 11.5 22.5 9 30 14"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+        opacity="0.36"
+      />
+      <circle cx="10" cy="21.5" r="2.25" fill="currentColor" />
+      <circle cx="22" cy="11.5" r="1.7" fill="currentColor" opacity="0.82" />
+      <circle cx="29" cy="15" r="1.25" fill="currentColor" opacity="0.58" />
+    </svg>
   );
 }

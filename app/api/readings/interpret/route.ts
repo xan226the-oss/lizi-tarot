@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import {
   buildDeepSeekMessages,
+  DeepSeekContentError,
   getInterpretationLengthProfile,
   parseDeepSeekContent
 } from "@/lib/deepseek";
@@ -81,7 +82,12 @@ export async function POST(request: Request) {
   } catch (error) {
     const timedOut = error instanceof DOMException && error.name === "AbortError";
     console.error("Interpretation upstream request failed", {
-      category: timedOut ? "timeout" : "invalid-upstream-response"
+      category: timedOut ? "timeout" : "invalid-upstream-response",
+      reason: timedOut
+        ? "timeout"
+        : error instanceof DeepSeekContentError
+          ? error.code
+          : "request-failed"
     });
     return NextResponse.json(
       {
